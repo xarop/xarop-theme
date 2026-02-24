@@ -178,8 +178,10 @@ function xarop_filter_posts_html()
     // Verify nonce (optional, add if needed)
     // check_ajax_referer('xarop_nonce', 'nonce');
 
-    $category_id = isset($_POST['category']) ? intval($_POST['category']) : 0;
-    $posts_per_page = isset($_POST['per_page']) ? intval($_POST['per_page']) : 12;
+    // Minimal AJAX handler for grid posts
+    $category_id = isset($_POST['category']) && $_POST['category'] !== 'all' ? intval($_POST['category']) : 0;
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $posts_per_page = get_option('posts_per_page');
 
     $args = array(
         'post_type'      => 'post',
@@ -187,16 +189,18 @@ function xarop_filter_posts_html()
         'post_status'    => 'publish',
         'orderby'        => 'date',
         'order'          => 'DESC',
+        'paged'          => $page,
     );
+    if ($category_id > 0) {
+        $args['cat'] = $category_id;
+    }
 
-    if ($category_id > 0 ) {
-        $args['tax_query'] = array(
-            array(
-                'taxonomy' => 'category',
-                'field'    => 'term_id',
-                'terms'    => $category_id,
-            ),
-        );
+    // Preselect category for archive pages
+    if (is_category()) {
+        $cat_obj = get_queried_object();
+        if ($cat_obj && isset($cat_obj->term_id)) {
+            $args['cat'] = $cat_obj->term_id;
+        }
     }
 
     $query = new WP_Query($args);
@@ -204,8 +208,20 @@ function xarop_filter_posts_html()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            include locate_template('template-parts/card.php');
+            include locate_template('template-parts/card.php'); // Minimal post card
         }
+        // Pagination
+        $big = 999999999;
+        echo '<div class="pagination">';
+        echo paginate_links(array(
+            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format' => '?paged=%#%',
+            'current' => max(1, $page),
+            'total' => $query->max_num_pages,
+            'prev_text' => __('&laquo;', 'xarop'),
+            'next_text' => __('&raquo;', 'xarop'),
+        ));
+        echo '</div>';
     } else {
         echo '<div class="no-results"><p>' . esc_html__('No posts found in this category.', 'xarop') . '</p></div>';
     }

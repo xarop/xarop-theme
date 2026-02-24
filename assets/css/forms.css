@@ -1,21 +1,20 @@
-/* Xarop Theme - Form Styles */
+/* Xarop Theme -  Styles */
 
 
-form {
+.form {
     background: var(--color-bg-alt);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     padding: var(--spacing-xl);
-    max-width: 480px;
     margin: var(--spacing-xl) auto;
 }
 
-form p {
+.form p {
     margin-bottom: var(--spacing-md);
 }
 
-form input,
-form textarea {
+input,
+textarea {
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
     border: 1px solid var(--color-border);
@@ -29,19 +28,18 @@ form textarea {
     box-sizing: border-box;
 }
 
-form input:focus,
-form textarea:focus {
+input:focus,
+textarea:focus {
     border-color: var(--color-primary);
     outline: none;
 }
 
-form textarea {
+textarea {
     min-height: 120px;
     resize: vertical;
 }
 
-form input[type="submit"],
-form button[type="submit"] {
+input[type="submit"] {
     background: var(--color-primary);
     color: var(--color-white);
     border: none;
@@ -52,29 +50,29 @@ form button[type="submit"] {
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
     margin-top: var(--spacing-md);
+    width: fit-content;
 }
 
-form input[type="submit"]:hover,
-form button[type="submit"]:hover {
+input[type="submit"]:hover {
     background: var(--color-primary-dark);
     color: var(--color-white);
 }
 
-form .wpcf7-response-output {
+.wpcf7-response-output {
     margin-top: var(--spacing-md);
     font-size: var(--font-size-small);
     color: var(--color-success);
 }
 
-form .wpcf7-not-valid {
+.wpcf7-not-valid {
     border-color: var(--color-error) !important;
 }
 
-form .wpcf7-spinner {
+.wpcf7-spinner {
     margin-left: var(--spacing-sm);
 }
 
-form label {
+label {
     font-size: var(--font-size-small);
     color: var(--color-text-light);
     margin-bottom: var(--spacing-xs);

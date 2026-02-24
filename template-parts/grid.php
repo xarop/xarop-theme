@@ -51,17 +51,16 @@ if ($has_posts) :
     <?php endif; ?>
 
     <?php if ($show_filters && !empty($categories) && !is_wp_error($categories)) : ?>
-        <div class="category-filters">
-            <button class="filter-btn active" data-category="all">
+        <form class="category-filters" method="get" action="">
+            <button type="submit" name="category" value="all" class="filter-btn<?php echo (!isset($_GET['category']) || $_GET['category'] === 'all') ? ' active' : ''; ?>">
                 <?php esc_html_e('All', 'xarop'); ?>
             </button>
             <?php foreach ($categories as $category) : ?>
-                <button class="filter-btn" data-category="<?php echo esc_attr($category->term_id); ?>">
+                <button type="submit" name="category" value="<?php echo esc_attr($category->term_id); ?>" class="filter-btn<?php echo (isset($_GET['category']) && $_GET['category'] == $category->term_id) ? ' active' : ''; ?>">
                     <?php echo esc_html($category->name); ?>
-                    <!-- <span class="category-count">(<?php echo esc_html($category->count); ?>)</span> -->
                 </button>
             <?php endforeach; ?>
-        </div>
+        </form>
     <?php endif; ?>
 
     <div class="grid" id="<?php echo esc_attr($grid_id); ?>">
@@ -75,14 +74,24 @@ if ($has_posts) :
             $paged = 1;
         }
         $posts_per_page = get_option('posts_per_page');
-        $posts_query = new WP_Query(
-            [
+        $cat_filter = isset($_GET['category']) && $_GET['category'] !== 'all' ? intval($_GET['category']) : '';
+        $query_args = [
             'post_type' => 'post',
             'post_status' => 'publish',
             'posts_per_page' => $posts_per_page,
             'paged' => $paged,
-            ]
-        );
+        ];
+        if ($cat_filter) {
+            $query_args['cat'] = $cat_filter;
+        }
+        // Si estamos en un archivo de categoría, preseleccionar el filtro
+        if (is_category()) {
+            $cat_obj = get_queried_object();
+            if ($cat_obj && isset($cat_obj->term_id)) {
+                $query_args['cat'] = $cat_obj->term_id;
+            }
+        }
+        $posts_query = new WP_Query($query_args);
         if ($posts_query->have_posts()) :
             while ($posts_query->have_posts()) : $posts_query->the_post();
                 // Aquí puedes personalizar la salida de cada post
@@ -93,14 +102,16 @@ if ($has_posts) :
             // Paginación
             $big = 999999999; // need an unlikely integer
             echo '<div class="pagination">';
-            echo paginate_links([
+            echo paginate_links(
+                [
                 'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
                 'format' => '?paged=%#%',
                 'current' => max(1, $paged),
                 'total' => $posts_query->max_num_pages,
                 'prev_text' => __('&laquo;', 'xarop'),
                 'next_text' => __('&raquo;', 'xarop'),
-            ]);
+                ]
+            );
             echo '</div>';
             wp_reset_postdata();
         else:
