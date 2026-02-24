@@ -105,24 +105,14 @@
     const filterButtons = document.querySelectorAll('.filter-btn');
     let currentCategory = 'all';
 
-    // Load posts
-    function loadPosts(categoryId) {
-      // Add loading state
+    // Load posts (with optional page)
+    function loadPosts(categoryId, page = 1) {
       gridContainer.classList.add('loading');
-
-      // Prepare request data
-      const requestData = {
-        category: categoryId,
-        per_page: 12
-      };
-
-      // Use Fetch API to get filtered posts
-      // Use AJAX to get HTML from PHP
       const formData = new FormData();
       formData.append('action', 'filter_posts_html');
       formData.append('category', categoryId);
-      formData.append('per_page', 12);
-
+      formData.append('page', page);
+      // Puedes agregar per_page si lo necesitas desde PHP
       fetch(xaropData.ajaxUrl, {
         method: 'POST',
         credentials: 'same-origin',
@@ -135,6 +125,7 @@
         .then(data => {
           if (data.success && data.data && data.data.html) {
             gridContainer.innerHTML = data.data.html;
+            attachPaginationHandlers();
           } else {
             gridContainer.innerHTML = '<div class="no-results">' +
               '<p>No posts found in this category.</p>' +
@@ -151,6 +142,20 @@
         });
     }
 
+    // Adjuntar eventos a los enlaces de paginación
+    function attachPaginationHandlers() {
+      const paginationLinks = gridContainer.querySelectorAll('.pagination a');
+      paginationLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const url = new URL(this.href);
+          let page = url.searchParams.get('paged') || url.searchParams.get('page') || 1;
+          page = parseInt(page, 10);
+          loadPosts(currentCategory, page);
+        });
+      });
+    }
+
     // Remove old renderposts function
 
     // (removed: old renderposts function)
@@ -163,10 +168,10 @@
         filterButtons.forEach(btn => btn.classList.remove('active'));
         this.classList.add('active');
         currentCategory = categoryId;
-        loadPosts(categoryId);
+        loadPosts(categoryId, 1);
       });
     });
-    loadPosts('all');
+    loadPosts('all', 1);
   }
 
   /**

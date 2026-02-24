@@ -27,6 +27,12 @@ if (!isset($categories)) {
         'hide_empty' => true,
         ]
     );
+    // Filtrar categorías sin posts publicados
+    $categories = array_filter(
+        $categories, function ($cat) {
+            return $cat->count > 0;
+        }
+    );
 }
 if (!isset($section_title)) {
     $section_title = '';
@@ -59,7 +65,48 @@ if ($has_posts) :
     <?php endif; ?>
 
     <div class="grid" id="<?php echo esc_attr($grid_id); ?>">
-        <!-- posts will be loaded here via JavaScript or PHP include -->
+        <?php
+        // Soporte para paginación en home, archivo y páginas personalizadas
+        if (get_query_var('paged')) {
+            $paged = get_query_var('paged');
+        } elseif (get_query_var('page')) {
+            $paged = get_query_var('page');
+        } else {
+            $paged = 1;
+        }
+        $posts_per_page = get_option('posts_per_page');
+        $posts_query = new WP_Query(
+            [
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => $posts_per_page,
+            'paged' => $paged,
+            ]
+        );
+        if ($posts_query->have_posts()) :
+            while ($posts_query->have_posts()) : $posts_query->the_post();
+                // Aquí puedes personalizar la salida de cada post
+                echo '<div class="grid-item">';
+                get_template_part('template-parts/content', get_post_format());
+                echo '</div>';
+            endwhile;
+            // Paginación
+            $big = 999999999; // need an unlikely integer
+            echo '<div class="pagination">';
+            echo paginate_links([
+                'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                'format' => '?paged=%#%',
+                'current' => max(1, $paged),
+                'total' => $posts_query->max_num_pages,
+                'prev_text' => __('&laquo;', 'xarop'),
+                'next_text' => __('&raquo;', 'xarop'),
+            ]);
+            echo '</div>';
+            wp_reset_postdata();
+        else:
+            echo '<p>' . esc_html__('none', 'xarop') . '</p>';
+        endif;
+        ?>
     </div>
 </div>
 <?php endif; ?>
