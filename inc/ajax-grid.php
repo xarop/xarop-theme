@@ -213,14 +213,16 @@ function xarop_filter_posts_html()
         // Pagination
         $big = 999999999;
         echo '<div class="pagination">';
-        echo paginate_links(array(
+        echo paginate_links(
+            array(
             'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
             'format' => '?paged=%#%',
             'current' => max(1, $page),
             'total' => $query->max_num_pages,
             'prev_text' => __('&laquo;', 'xarop'),
             'next_text' => __('&raquo;', 'xarop'),
-        ));
+            )
+        );
         echo '</div>';
     } else {
         echo '<div class="no-results"><p>' . esc_html__('No posts found in this category.', 'xarop') . '</p></div>';
