@@ -1,0 +1,74 @@
+/* Xarop Theme Custom List Styles */
+.entry-content {
+
+    ul,
+    ol {
+        padding-left: 1.5em;
+        margin-bottom: 1.5em;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    ul li {
+        position: relative;
+        padding-left: 1.5em;
+        margin-bottom: 0.5em;
+    }
+
+    ul li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+        width: 0.7em;
+        height: 0.7em;
+        background: var(--color-primary);
+        border-radius: 2px;
+        display: inline-block;
+    }
+
+    ol {
+        list-style: decimal inside;
+        color: var(--color-primary);
+        counter-reset: custom-counter;
+    }
+
+    ol li {
+        position: relative;
+        padding-left: 0.5em;
+        margin-bottom: 0.5em;
+        color: var(--color-primary);
+    }
+
+    ol li::marker {
+        color: var(--color-primary);
+        font-weight: bold;
+    }
+
+    /* Variants: square, circle, dash */
+
+    ul.square li::before {
+        border-radius: 2px;
+    }
+
+    ul.circle li::before {
+        border-radius: 50%;
+    }
+
+    ul.dash li::before {
+        width: 1.2em;
+        height: 0.25em;
+        border-radius: 2px;
+    }
+
+
+}
+
+/* Example usage:
+<ul class="custom-list square">
+<ul class="custom-list circle">
+<ul class="custom-list dash">
+<ol class="custom-list">
+*/

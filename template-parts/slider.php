@@ -40,13 +40,13 @@ if (function_exists('is_front_page') && is_front_page() && isset($GLOBALS['post'
                         <div class="slide-image" style="height: 500px;"></div>
                     <?php endif; ?>
                     <div class="slide-content">
-                        <h2 class="slide-title"><?php the_title(); ?></h2>
-                        <div class="slide-excerpt">
-                            <?php echo wp_trim_words(get_the_excerpt(), 20); ?>
-                        </div>
-                        <a href="<?php the_permalink(); ?>" class="slide-link">
-                            <?php esc_html_e('Learn More', 'xarop'); ?>
-                        </a>
+                            <h2 class="slide-title"><?php the_title(); ?></h2>
+                            <div class="slide-excerpt">
+                                <?php echo wp_trim_words(get_the_excerpt(), 20); ?>
+                            </div>
+                            <a href="<?php the_permalink(); ?>" class="slide-link">
+                                <?php esc_html_e('Learn More', 'xarop'); ?>
+                            </a>
                     </div>
                 </div>
                 <?php

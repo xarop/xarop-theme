@@ -1,9 +1,9 @@
 /* Xarop Theme CSS Variables */
 :root {
     /* Colors - Primary (More vibrant) */
-    --color-primary: #8da35c;
-    --color-primary-dark: #708238;
-    --color-primary-light: #c2d1b0;
+    --color-primary: #ee2455;
+    --color-primary-dark: #b01a3e;
+    --color-primary-light: #ff5c7a;
 
     /* Colors - Neutral */
     --color-white: #ffffff;

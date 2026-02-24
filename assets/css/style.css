@@ -8,6 +8,13 @@
 @import url('slider.css');
 @import url('grid.css');
 @import url('forms.css');
+@import url('lists.css');
+@import url('related.css');
 @import url('utilities.css');
 @import url('responsive.css');
 @import url('lightbox.css');
+
+/* G translate menu */
+.gt-current-wrapper {
+    display: none;
+}

@@ -1,0 +1,10 @@
+/* Xarop Theme Custom List Styles */
+.related-posts {
+
+    margin-top: 2rem;
+
+    h2,
+    h3 {
+        text-align: center;
+    }
+}

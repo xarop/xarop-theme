@@ -20,7 +20,7 @@ get_header();
                 <?php the_title('<h1 class="entry-title text-center">', '</h1>'); ?>
             </header>
 
-            <?php if (has_post_thumbnail() ) : ?>
+            <?php if (has_post_thumbnail()) : ?>
                 <div class="post-thumbnail">
                     <?php the_post_thumbnail('large'); ?>
                 </div>
