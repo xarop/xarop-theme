@@ -1,0 +1,54 @@
+/* ===========================
+SINGLE POST/PAGE
+=========================== */
+
+.single-content {
+    max-width: var(--reader-max-width, 900px);
+    margin: 0 auto;
+    padding: var(--spacing-2xl) var(--container-padding);
+}
+
+.entry-title {
+    margin-bottom: var(--spacing-lg);
+}
+
+.entry-content {
+    font-size: var(--font-size-large);
+    line-height: 1.8;
+    color: var(--color-text);
+}
+
+.entry-content>*+* {
+    margin-top: var(--spacing-lg);
+}
+
+/* Custom Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-2xl) 0;
+}
+
+.gallery a {
+    display: block;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: transform var(--transition-base);
+}
+
+.gallery a:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.gallery a:hover img {
+    transform: scale(1.1);
+}

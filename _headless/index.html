@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xarop Headless</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="site-branding logo-tagline-wrap">
+                <a href="/" class="custom-logo-link" rel="home">
+                    <span class="site-title">XYLOO</span>
+                    <span class="site-tagline"></span>
+                </a>
+            </div>
+
+            <input type="checkbox" id="menu-toggle" />
+            <label for="menu-toggle" class="menu-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="menu-overlay"></div>
+
+            <nav class="main-navigation" role="navigation" aria-label="Main Menu">
+                <div class="mobile-branding">
+                    <a href="/" class="custom-logo-link" data-nav>
+                        <span class="site-title">XYLOO</span>
+                    </a>
+                </div>
+                <ul id="primary-menu">
+                    <!-- Dynamic Menu Items -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="app" class="site-main">
+        <div class="loader-container">
+            <div class="loader"></div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-branding">
+                <a href="https://www.red.es/es/iniciativas/proyectos/kit-digital" target="_blank" rel="noreferrer noopener" class="kit-digital-link">
+                    <!-- Image will be injected via JS or CSS -->
+                </a>
+            </div>
+            
+            <div id="footer-info" class="site-info">
+                <!-- Dynamic Copyright -->
+            </div>
+
+            <nav class="footer-navigation">
+                <ul id="footer-menu-list">
+                    <!-- Dynamic Footer Menu -->
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
