@@ -51,16 +51,16 @@ if ($has_posts) :
     <?php endif; ?>
 
     <?php if ($show_filters && !empty($categories) && !is_wp_error($categories)) : ?>
-        <form class="category-filters" method="get" action="">
-            <button type="submit" name="category" value="all" class="filter-btn<?php echo (!isset($_GET['category']) || $_GET['category'] === 'all') ? ' active' : ''; ?>">
+        <div class="category-filters" role="group" aria-label="<?php esc_attr_e('Filter by category', 'xarop'); ?>">
+            <button type="button" data-category="all" class="filter-btn<?php echo (!isset($_GET['category']) || $_GET['category'] === 'all') ? ' active' : ''; ?>">
                 <?php esc_html_e('All', 'xarop'); ?>
             </button>
             <?php foreach ($categories as $category) : ?>
-                <button type="submit" name="category" value="<?php echo esc_attr($category->term_id); ?>" class="filter-btn<?php echo (isset($_GET['category']) && $_GET['category'] == $category->term_id) ? ' active' : ''; ?>">
+                <button type="button" data-category="<?php echo esc_attr($category->slug); ?>" class="filter-btn<?php echo (isset($_GET['category']) && $_GET['category'] === $category->slug) ? ' active' : ''; ?>">
                     <?php echo esc_html($category->name); ?>
                 </button>
             <?php endforeach; ?>
-        </form>
+        </div>
     <?php endif; ?>
 
     <div class="grid" id="<?php echo esc_attr($grid_id); ?>">
@@ -74,7 +74,7 @@ if ($has_posts) :
             $paged = 1;
         }
         $posts_per_page = get_option('posts_per_page');
-        $cat_filter = isset($_GET['category']) && $_GET['category'] !== 'all' ? intval($_GET['category']) : '';
+        $cat_filter = isset($_GET['category']) && $_GET['category'] !== 'all' ? sanitize_key($_GET['category']) : '';
         $query_args = [
             'post_type' => 'post',
             'post_status' => 'publish',
@@ -82,13 +82,13 @@ if ($has_posts) :
             'paged' => $paged,
         ];
         if ($cat_filter) {
-            $query_args['cat'] = $cat_filter;
+            $query_args['category_name'] = $cat_filter;
         }
         // Si estamos en un archivo de categoría, preseleccionar el filtro
         if (is_category()) {
             $cat_obj = get_queried_object();
-            if ($cat_obj && isset($cat_obj->term_id)) {
-                $query_args['cat'] = $cat_obj->term_id;
+            if ($cat_obj && isset($cat_obj->slug)) {
+                $query_args['category_name'] = $cat_obj->slug;
             }
         }
         $posts_query = new WP_Query($query_args);

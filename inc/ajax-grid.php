@@ -179,7 +179,7 @@ function xarop_filter_posts_html()
     // check_ajax_referer('xarop_nonce', 'nonce');
 
     // Minimal AJAX handler for grid posts
-    $category_id = isset($_POST['category']) && $_POST['category'] !== 'all' ? intval($_POST['category']) : 0;
+    $category_slug = isset($_POST['category']) && $_POST['category'] !== 'all' ? sanitize_key($_POST['category']) : '';
     $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
     $posts_per_page = get_option('posts_per_page');
 
@@ -191,16 +191,8 @@ function xarop_filter_posts_html()
         'order'          => 'DESC',
         'paged'          => $page,
     );
-    if ($category_id > 0) {
-        $args['cat'] = $category_id;
-    }
-
-    // Preselect category for archive pages
-    if (is_category()) {
-        $cat_obj = get_queried_object();
-        if ($cat_obj && isset($cat_obj->term_id)) {
-            $args['cat'] = $cat_obj->term_id;
-        }
+    if ($category_slug) {
+        $args['category_name'] = $category_slug;
     }
 
     $query = new WP_Query($args);

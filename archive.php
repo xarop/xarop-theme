@@ -8,35 +8,49 @@
 
 get_header();
 ?>
-<section class="container">
-    <div class="container-inner">
-        <header class="page-header">
-            <h1 class="page-title text-center">
-                <?php
-                $post_type_obj = get_post_type_object(get_post_type());
-                echo esc_html($post_type_obj && isset($post_type_obj->labels->name) ? $post_type_obj->labels->name : '');
-                ?>
-            </h1>
-        </header>
 
+<div class="container">
+    <header class="page-header">
+        <h1 class="page-title text-center"><?php echo get_the_archive_title(); ?></h1>
         <?php
-        // Get all categories for filters
-        $categories = get_terms(
-            array(
-            'taxonomy'   => 'category',
-            'hide_empty' => true,
-            )
-        );
+        $archive_description = get_the_archive_description();
+        if ($archive_description) :
         ?>
-
-        <?php if (! empty($categories) && ! is_wp_error($categories) ) : ?>
-            <?php 
-            // $section_title = __('posts', 'xarop');
-            include locate_template('template-parts/grid.php'); 
-            ?>
+            <p class="archive-description text-center"><?php echo wp_kses_post($archive_description); ?></p>
         <?php endif; ?>
-    </div>
-</section>
+    </header>
+
+    <?php if (have_posts()) : ?>
+        <div class="grid">
+            <?php
+            while (have_posts()) :
+                the_post();
+                include locate_template('template-parts/card.php');
+            endwhile;
+            ?>
+        </div>
+
+        <div class="pagination">
+            <?php
+            global $wp_query;
+            $big = 999999999;
+            echo paginate_links(
+                array(
+                    'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                    'format'    => '?paged=%#%',
+                    'current'   => max(1, get_query_var('paged')),
+                    'total'     => $wp_query->max_num_pages,
+                    'prev_text' => '&laquo;',
+                    'next_text' => '&raquo;',
+                )
+            );
+            ?>
+        </div>
+
+    <?php else : ?>
+        <p class="text-center"><?php esc_html_e('No posts found.', 'xarop'); ?></p>
+    <?php endif; ?>
+</div>
 
 <?php
 get_footer();
