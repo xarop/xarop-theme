@@ -15,7 +15,7 @@ get_header();
         <?php
         $archive_description = get_the_archive_description();
         if ($archive_description) :
-        ?>
+            ?>
             <p class="archive-description text-center"><?php echo wp_kses_post($archive_description); ?></p>
         <?php endif; ?>
     </header>
