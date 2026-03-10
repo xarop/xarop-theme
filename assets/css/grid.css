@@ -155,3 +155,111 @@ CATEGORY GRID
     color: var(--color-text-lighter);
     font-size: var(--font-size-large);
 }
+
+/* ===========================
+   PAGINATION
+=========================== */
+
+.pagination {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xl);
+    flex-wrap: wrap;
+}
+
+.pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 var(--spacing-sm);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    background-color: var(--color-white);
+}
+
+.pagination .page-numbers:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.pagination .page-numbers.current {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    pointer-events: none;
+}
+
+.pagination .page-numbers.dots {
+    border-color: transparent;
+    background: none;
+    pointer-events: none;
+    color: var(--color-text-lighter);
+}
+
+/* ===========================
+   PAGINATION
+=========================== */
+
+.pagination {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xl);
+    flex-wrap: wrap;
+}
+
+.pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 var(--spacing-sm);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    background-color: var(--color-white);
+}
+
+.pagination .page-numbers:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.pagination .page-numbers.current {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    pointer-events: none;
+}
+
+.pagination .page-numbers.dots {
+    border-color: transparent;
+    background: none;
+    pointer-events: none;
+    color: var(--color-text-lighter);
+}

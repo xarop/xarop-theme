@@ -34,7 +34,7 @@ get_header();
             // Display custom gallery if it exists
             include locate_template('template-parts/gallery.php');
             // Display shared categories
-            // include locate_template('template-parts/categories.php');
+            include locate_template('template-parts/categories.php');
             // Display related posts
             include locate_template('template-parts/related.php');
             ?>

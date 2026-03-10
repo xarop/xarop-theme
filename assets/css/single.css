@@ -52,3 +52,43 @@ SINGLE POST/PAGE
 .gallery a:hover img {
     transform: scale(1.1);
 }
+
+/* ===========================
+   ENTRY CATEGORIES (single)
+=========================== */
+
+.entry-categories {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.entry-categories h3 {
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-light);
+    font-weight: var(--font-weight-medium);
+}
+
+.post-categories {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.post-categories .category-tag {
+    text-decoration: none;
+    background-color: var(--color-bg-alt);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+.post-categories .category-tag:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}

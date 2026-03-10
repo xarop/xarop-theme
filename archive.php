@@ -11,8 +11,7 @@ get_header();
 <section class="container">
     <div class="container-inner">
         <header class="page-header">
-            <h1 class="page-title">
-                ARCHIVE
+            <h1 class="page-title text-center">
                 <?php
                 $post_type_obj = get_post_type_object(get_post_type());
                 echo esc_html($post_type_obj && isset($post_type_obj->labels->name) ? $post_type_obj->labels->name : '');
