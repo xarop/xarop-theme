@@ -1,72 +1,125 @@
-# Xarop Headless Web 🚀
+# Xarop Headless — Front-end Desacoplado 🚀
 
-Esta es la versión **headless** del tema Xarop, diseñada para ser rápida, moderna y totalmente desacoplada de WordPress, utilizando la **REST API** para la gestión de contenidos.
+Front-end independiente construido con **Vite + Vanilla JS** que consume el CMS WordPress a través de la REST API. Funciona en combinación con el **Modo Headless** de `xarop-theme v2`.
 
-## ✨ Características Premium
+---
 
-- **Arquitectura Headless**: Comunicación directa con los endpoints de WordPress (`wp-json`).
-- **Diseño Glassmorphism**: Header pegajoso con efectos de desenfoque y profundidad.
-- **Slider Dinámico Interactivo**: Carrusel de imágenes que consume páginas destacadas automáticamente.
-- **Grid de Posts con Filtrado Real-time**: Sistema de filtrado por categorías sin recarga de página.
-- **Optimizado con Vite**: Tooling moderno para un desarrollo ultra rápido y builds optimizados.
-- **Aesthetics Modernas**: Tipografía Inter, paleta de colores armoniosa y micro-interacciones.
+## Arquitectura
 
-## 🛠️ Stack Tecnológico
+```
+┌─────────────────────────────┐         REST API          ┌───────────────────────────┐
+│   WordPress + xarop-theme   │  ─────────────────────►  │    _headless/ (este dir)  │
+│   headless_mode: true       │   /wp-json/wp/v2/         │    Vite + Vanilla JS      │
+│   Solo back-end / CMS       │   /wp-json/xarop/v1/      │    Vercel, Netlify, etc.  │
+└─────────────────────────────┘                           └───────────────────────────┘
+```
 
-- **Frontend**: HTML5, Vanilla CSS (Custom Properties), JavaScript ES6+.
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Backend**: WordPress REST API (Endpoints estándar y personalizados de Xarop).
+Para activar el modo headless en WordPress, edita `theme-config.php`:
 
-## 🚀 Instalación y Uso
+```php
+'headless_mode' => true,
+```
 
-Asegúrate de tener [Node.js](https://nodejs.org/) instalado.
+Esto redirige todo el tráfico del front-end al `/wp-admin` y activa las cabeceras CORS.
 
-1.  **Entrar al directorio**:
+---
 
-    ```bash
-    cd themes/xarop-theme/_headless
-    ```
+## Instalación rápida
 
-2.  **Instalar dependencias**:
+Requiere Node.js 18+.
 
-    ```bash
-    npm install
-    ```
-
-3.  **Desarrollo**:
-
-    ```bash
-    npm run dev
-    ```
-
-    _La web será accesible en `http://localhost:5173` (o similar)._
-
-4.  **Producción**:
-    ```bash
-    npm run build
-    ```
-    _Los archivos optimizados se generarán en la carpeta `dist/`._
-
-## 🔌 Configuración de API
-
-El archivo `src/api.js` está configurado para detectar automáticamente tu entorno:
-
-- Si detecta `localhost`, apuntará a `http://xyloo.local`.
-- En producción, utilizará la URL relativa del dominio donde esté alojado.
-
-## 📁 Estructura del Proyecto
-
-```text
-_headless/
-├── index.html         # Punto de entrada y estructura base
-├── src/
-│   ├── main.js        # Lógica de la app, Slider y Filtros
-│   ├── api.js         # Módulo de comunicación con WordPress
-│   └── style.css      # Sistema de diseño y estilos premium
-├── package.json       # Scripts y dependencias
-└── README.md          # Esta guía
+```bash
+cd wp-content/themes/xarop-theme/_headless
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # Carpeta dist/ lista para deploy
+npm run preview    # Previsualizar el build
 ```
 
 ---
 
-Creado con ❤️ para la experiencia **Xarop Headless**.
+## Configuración de la API
+
+Edita **`src/api.js`** — solo una línea:
+
+```js
+const BASE_URL = 'https://tu-wordpress.com';
+```
+
+---
+
+## Endpoints disponibles
+
+### Estándar WordPress
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/wp-json` | Info del sitio |
+| GET | `/wp-json/wp/v2/pages?_embed` | Páginas con imágenes |
+| GET | `/wp-json/wp/v2/posts?_embed` | Entradas con imágenes |
+| GET | `/wp-json/wp/v2/categories` | Categorías |
+| GET | `/wp-json/wp/v2/pages?slug=SLUG&_embed` | Página por slug |
+| GET | `/wp-json/wp/v2/posts?slug=SLUG&_embed` | Post por slug |
+
+### Personalizados Xarop
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/wp-json/xarop/v1/menus` | Menús con jerarquía |
+| GET | `/wp-json/xarop/v1/filtered-posts?category=ID&per_page=12` | Posts filtrados |
+
+### Campos extra en posts y páginas
+
+```json
+{
+  "custom_gallery": {
+    "ids": [12, 34],
+    "images": [{ "id": 12, "full": {"url":"...","width":1920,"height":1080},
+                 "medium": {...}, "thumbnail": {...}, "alt": "...", "caption": "..." }]
+  },
+  "shared_categories": [
+    { "id": 5, "name": "Proyectos", "slug": "proyectos", "count": 12 }
+  ]
+}
+```
+
+---
+
+## Despliegue
+
+### Vercel / Netlify
+
+1. Directorio raíz: `wp-content/themes/xarop-theme/_headless`
+2. Build command: `npm run build`
+3. Output directory: `dist`
+
+### Apache (.htaccess para SPA)
+
+```apache
+RewriteEngine On
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+```
+
+### Nginx
+
+```nginx
+location / { try_files $uri $uri/ /index.html; }
+```
+
+---
+
+## CORS en WordPress
+
+Con `headless_mode: true`, el tema añade automáticamente cabeceras CORS.
+Para restringir a un dominio concreto en producción, edita `inc/headless.php` línea ~70:
+
+```php
+header( 'Access-Control-Allow-Origin: https://tu-frontend.com' );
+```
+
+---
+
+Creado con corazón por [xarop.com](https://xarop.com)

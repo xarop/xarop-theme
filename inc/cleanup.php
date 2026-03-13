@@ -8,41 +8,39 @@
  * @since   1.0.0
  */
 
-// Exit if accessed directly
+// Salir si se accede directamente
 if (! defined('ABSPATH') ) {
     exit;
 }
 
 /**
- * Remove Gutenberg editor
+ * Gutenberg: activar o desactivar según theme-config.php
+ * gutenberg_enabled = false → desactiva el editor de bloques y sus estilos.
+ * gutenberg_enabled = true  → comportamiento WordPress por defecto.
  */
-function xarop_disable_gutenberg()
-{
-    // Disable for all post types
-    add_filter('use_block_editor_for_post', '__return_false', 10);
-    add_filter('use_block_editor_for_post_type', '__return_false', 10);
+$xarop_cleanup_config = xarop_get_config();
+
+if (! $xarop_cleanup_config['gutenberg_enabled'] ) {
+
+    function xarop_disable_gutenberg()
+    {
+        add_filter('use_block_editor_for_post',      '__return_false', 10);
+        add_filter('use_block_editor_for_post_type', '__return_false', 10);
+    }
+    add_action('init', 'xarop_disable_gutenberg');
+
+    function xarop_remove_gutenberg_styles()
+    {
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        wp_dequeue_style('global-styles');
+        wp_dequeue_style('classic-theme-styles');
+    }
+    add_action('wp_enqueue_scripts', 'xarop_remove_gutenberg_styles', 100);
 }
-add_action('init', 'xarop_disable_gutenberg');
 
 /**
- * Remove Gutenberg styles
- */
-function xarop_remove_gutenberg_styles()
-{
-    // Remove block library CSS
-    wp_dequeue_style('wp-block-library');
-    wp_dequeue_style('wp-block-library-theme');
-    
-    // Remove inline global styles
-    wp_dequeue_style('global-styles');
-    
-    // Remove classic themes styles
-    wp_dequeue_style('classic-theme-styles');
-}
-add_action('wp_enqueue_scripts', 'xarop_remove_gutenberg_styles', 100);
-
-/**
- * Remove emoji scripts and styles
+ * Eliminar scripts y estilos de emojis
  */
 function xarop_disable_emojis()
 {
@@ -57,7 +55,7 @@ function xarop_disable_emojis()
 add_action('init', 'xarop_disable_emojis');
 
 /**
- * Remove emoji DNS prefetch
+ * Eliminar prefetch DNS de emojis
  */
 function xarop_disable_emoji_dns_prefetch( $urls, $relation_type )
 {
@@ -70,7 +68,7 @@ function xarop_disable_emoji_dns_prefetch( $urls, $relation_type )
 add_filter('wp_resource_hints', 'xarop_disable_emoji_dns_prefetch', 10, 2);
 
 /**
- * Remove TinyMCE emoji plugin
+ * Eliminar plugin de emojis de TinyMCE
  */
 function xarop_disable_emoji_tinymce( $plugins )
 {
@@ -82,32 +80,32 @@ function xarop_disable_emoji_tinymce( $plugins )
 add_filter('tiny_mce_plugins', 'xarop_disable_emoji_tinymce');
 
 /**
- * Remove embeds functionality
+ * Eliminar la funcionalidad de embeds
  */
 function xarop_disable_embeds()
 {
-    // Remove the REST API endpoint
+    // Eliminar el endpoint REST API
     remove_action('rest_api_init', 'wp_oembed_register_route');
 
-    // Turn off oEmbed auto discovery
+    // Desactivar la detección automática de oEmbed
     add_filter('embed_oembed_discover', '__return_false');
 
-    // Don't filter oEmbed results
+    // No filtrar los resultados de oEmbed
     remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
 
-    // Remove oEmbed discovery links
+    // Eliminar los enlaces de descubrimiento oEmbed
     remove_action('wp_head', 'wp_oembed_add_discovery_links');
 
-    // Remove oEmbed-specific JavaScript from the front-end and back-end
+    // Eliminar el JavaScript específico de oEmbed del front y del admin
     remove_action('wp_head', 'wp_oembed_add_host_js');
 
-    // Remove all embeds rewrite rules
+    // Eliminar todas las reglas de reescritura de embeds
     add_filter('rewrite_rules_array', 'xarop_disable_embeds_rewrites');
 }
 add_action('init', 'xarop_disable_embeds', 9999);
 
 /**
- * Remove embed rewrite rules
+ * Eliminar las reglas de reescritura de embeds
  */
 function xarop_disable_embeds_rewrites( $rules )
 {
@@ -120,7 +118,7 @@ function xarop_disable_embeds_rewrites( $rules )
 }
 
 /**
- * Remove embed query vars
+ * Eliminar las variables de consulta de embeds
  */
 function xarop_disable_embeds_query_vars( $vars )
 {
@@ -130,42 +128,42 @@ function xarop_disable_embeds_query_vars( $vars )
 add_filter('query_vars', 'xarop_disable_embeds_query_vars');
 
 /**
- * Disable Tags support globally
+ * Desactivar el soporte de etiquetas globalmente
  */
 function xarop_disable_tags()
 {
-    // Unregister post_tag taxonomy from posts
+    // Desregistrar la taxonomía post_tag de las entradas
     unregister_taxonomy_for_object_type('post_tag', 'post');
 }
 add_action('init', 'xarop_disable_tags');
 
 /**
- * Remove unnecessary header tags
+ * Eliminar etiquetas de cabecera innecesarias
  */
 function xarop_cleanup_head()
 {
-    // Remove Windows Live Writer manifest
+    // Eliminar el manifiesto de Windows Live Writer
     remove_action('wp_head', 'wlwmanifest_link');
     
-    // Remove RSD link
+    // Eliminar el enlace RSD
     remove_action('wp_head', 'rsd_link');
     
-    // Remove WordPress version
+    // Eliminar la versión de WordPress
     remove_action('wp_head', 'wp_generator');
     
-    // Remove shortlink
+    // Eliminar el shortlink
     remove_action('wp_head', 'wp_shortlink_wp_head');
     
-    // Remove REST API link
+    // Eliminar el enlace REST API
     remove_action('wp_head', 'rest_output_link_wp_head');
     
-    // Remove feed links (we added them back selectively in setup)
+    // Eliminar los enlaces de feed
     remove_action('wp_head', 'feed_links_extra', 3);
 }
 add_action('init', 'xarop_cleanup_head');
 
 /**
- * Remove jQuery Migrate
+ * Eliminar jQuery Migrate
  */
 function xarop_remove_jquery_migrate( $scripts )
 {
@@ -179,7 +177,7 @@ function xarop_remove_jquery_migrate( $scripts )
 add_action('wp_default_scripts', 'xarop_remove_jquery_migrate');
 
 /**
- * Remove version query strings from static resources
+ * Eliminar las versiones de query string de los recursos estáticos
  */
 function xarop_remove_script_version( $src )
 {
@@ -192,24 +190,5 @@ add_filter('style_loader_src', 'xarop_remove_script_version', 9999);
 add_filter('script_loader_src', 'xarop_remove_script_version', 9999);
 
 
-// Remove Gutenberg block library CSS from the front-end
-function xarop_remove_block_library_css()
-{
-    wp_dequeue_style('wp-block-library');
-    wp_dequeue_style('wp-block-library-theme');
-}
-add_action('wp_enqueue_scripts', 'xarop_remove_block_library_css', 100);    
-
-
-// Disable comments
-function xarop_disable_comments()
-{
-    // Disable support for comments and trackbacks in post types
-    foreach (get_post_types() as $post_type ) {
-        if (post_type_supports($post_type, 'comments') ) {
-            remove_post_type_support($post_type, 'comments');
-            remove_post_type_support($post_type, 'trackbacks');
-        }
-    }
-}
-add_action('admin_init', 'xarop_disable_comments');
+// El sistema de comentarios es gestionado por inc/comments.php
+// mediante el valor 'comments_enabled' de theme-config.php.

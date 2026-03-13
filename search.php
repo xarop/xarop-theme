@@ -15,7 +15,7 @@ get_header();
         <h1 class="page-title">
             <?php
             /* translators: %s: search query */
-            printf(esc_html__('Search Results for: %s', 'xarop'), '<span>' . get_search_query() . '</span>');
+            printf(esc_html__('Resultados de búsqueda para: %s', 'xarop'), '<span>' . get_search_query() . '</span>');
             ?>
         </h1>
         <div class="searchform-wrapper">
@@ -33,16 +33,16 @@ get_header();
             <?php
             the_posts_pagination(
                 array(
-                    'prev_text' => __('&larr; Previous', 'xarop'),
-                    'next_text' => __('Next &rarr;', 'xarop'),
+                    'prev_text' => __('&larr; Anterior', 'xarop'),
+                    'next_text' => __('Siguiente &rarr;', 'xarop'),
                 )
             );
             ?>
         </div>
     <?php else : ?>
         <div class="no-results">
-            <h2><?php esc_html_e('Nothing Found', 'xarop'); ?></h2>
-            <p><?php esc_html_e('Sorry, but nothing matched your search terms. Please try again with different keywords.', 'xarop'); ?></p>
+            <h2><?php esc_html_e('Sin resultados', 'xarop'); ?></h2>
+            <p><?php esc_html_e('Lo sentimos, tu búsqueda no encontró resultados. Prueba con otras palabras.', 'xarop'); ?></p>
             <?php get_search_form(); ?>
         </div>
     <?php endif; ?>

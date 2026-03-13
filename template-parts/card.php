@@ -21,16 +21,16 @@ $link = get_permalink($post_id);
 $title = get_the_title($post_id);
 $thumb_size = isset($thumb_size) ? $thumb_size : 'medium';
 
-// Get image
+// Obtener imagen
 if (has_post_thumbnail($post_id)) {
     $image = get_the_post_thumbnail($post_id, $thumb_size, array('class' => 'post-image'));
 } else {
     $image = '<div class="post-image placeholder" style="background:#f0f0f0;height:200px;"></div>';
 }
 
-// Get excerpt
+// Obtener extracto
 $excerpt = get_the_excerpt($post_id);
-// Get categories (category)
+// Obtener categorías
 $terms = get_the_terms($post_id, 'category');
 ?>
 <article class="card card-<?php echo esc_attr($post_type); ?>">

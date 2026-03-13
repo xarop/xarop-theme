@@ -1,20 +1,20 @@
 <?php
 /**
- * Custom Meta Boxes
+ * Meta Boxes Personalizados
  *
- * Native Meta Box for Gallery using WordPress Media Library
+ * Meta Box nativo de Galería usando la Biblioteca de Medios de WordPress
  *
  * @package xarop
  * @since   1.0.0
  */
 
-// Exit if accessed directly
+// Salir si se accede directamente
 if (! defined('ABSPATH') ) {
     exit;
 }
 
 /**
- * Add custom gallery meta box
+ * Registrar el meta box de galería personalizada
  */
 function xarop_add_gallery_meta_box()
 {
@@ -23,7 +23,7 @@ function xarop_add_gallery_meta_box()
     foreach ( $post_types as $post_type ) {
         add_meta_box(
             'xarop_gallery',
-            __('Custom Gallery', 'xarop'),
+            __('Galería personalizada', 'xarop'),
             'xarop_gallery_meta_box_callback',
             $post_type,
             'normal',
@@ -34,14 +34,14 @@ function xarop_add_gallery_meta_box()
 add_action('add_meta_boxes', 'xarop_add_gallery_meta_box');
 
 /**
- * Gallery meta box callback
+ * Callback del meta box de galería
  */
 function xarop_gallery_meta_box_callback( $post )
 {
-    // Add nonce for security
+    // Añadir nonce de seguridad
     wp_nonce_field('xarop_gallery_nonce', 'xarop_gallery_nonce_field');
 
-    // Get current gallery IDs
+    // Obtener los IDs actuales de la galería
     $gallery_ids = get_post_meta($post->ID, '_custom_gallery_ids', true);
     $gallery_ids = ! empty($gallery_ids) ? $gallery_ids : '';
 
@@ -58,7 +58,7 @@ function xarop_gallery_meta_box_callback( $post )
             if ($image_url ) {
                 echo '<div class="gallery-image" data-id="' . esc_attr($id) . '">';
                 echo '<img src="' . esc_url($image_url) . '" />';
-                echo '<span class="remove-image" title="' . esc_attr__('Remove', 'xarop') . '">&times;</span>';
+                echo '<span class="remove-image" title="' . esc_attr__('Eliminar', 'xarop') . '">&times;</span>';
                 echo '</div>';
             }
         }
@@ -68,15 +68,15 @@ function xarop_gallery_meta_box_callback( $post )
 
         <p>
             <button type="button" class="button button-primary" id="add-gallery-images">
-                <?php esc_html_e('Add Images', 'xarop'); ?>
+                <?php esc_html_e('Añadir imágenes', 'xarop'); ?>
             </button>
             <button type="button" class="button" id="clear-gallery-images">
-                <?php esc_html_e('Clear All', 'xarop'); ?>
+                <?php esc_html_e('Borrar todo', 'xarop'); ?>
             </button>
         </p>
 
         <p class="description">
-    <?php esc_html_e('Select multiple images from the media library to create a gallery.', 'xarop'); ?>
+    <?php esc_html_e('Selecciona varias imágenes de la biblioteca de medios para crear una galería.', 'xarop'); ?>
         </p>
     </div>
 
@@ -130,21 +130,21 @@ function xarop_gallery_meta_box_callback( $post )
         var galleryFrame;
         var galleryIds = $('#custom_gallery_ids').val().split(',').filter(Boolean);
 
-        // Add images button
+        // Botón añadir imágenes
         $('#add-gallery-images').on('click', function(e) {
             e.preventDefault();
 
-            // If the media frame already exists, reopen it
+            // Si el marco de medios ya existe, reabrirlo
             if (galleryFrame) {
                 galleryFrame.open();
                 return;
             }
 
-            // Create the media frame
+            // Crear el marco de medios
             galleryFrame = wp.media({
-                title: '<?php echo esc_js(__('Select Gallery Images', 'xarop')); ?>',
+                title: '<?php echo esc_js(__('Seleccionar imágenes de la galería', 'xarop')); ?>',
                 button: {
-                    text: '<?php echo esc_js(__('Add to Gallery', 'xarop')); ?>'
+                    text: '<?php echo esc_js(__('Añadir a la galería', 'xarop')); ?>'
                 },
                 multiple: true,
                 library: {
@@ -152,63 +152,63 @@ function xarop_gallery_meta_box_callback( $post )
                 }
             });
 
-            // When images are selected
+            // Cuando se seleccionan imágenes
             galleryFrame.on('select', function() {
                 var selection = galleryFrame.state().get('selection');
                 
                 selection.each(function(attachment) {
                     attachment = attachment.toJSON();
                     
-                    // Add to array if not already present
+                    // Añadir al array si no está ya
                     if (galleryIds.indexOf(attachment.id.toString()) === -1) {
                         galleryIds.push(attachment.id);
                         
-                        // Add preview
+                        // Añadir vista previa
                         var imageHtml = '<div class="gallery-image" data-id="' + attachment.id + '">' +
                             '<img src="' + attachment.sizes.thumbnail.url + '" />' +
-                            '<span class="remove-image" title="<?php echo esc_js(__('Remove', 'xarop')); ?>">&times;</span>' +
+                            '<span class="remove-image" title="<?php echo esc_js(__('Eliminar', 'xarop')); ?>">&times;</span>' +
                             '</div>';
                         $('#gallery-preview').append(imageHtml);
                     }
                 });
 
-                // Update hidden input
+                // Actualizar el campo oculto
                 $('#custom_gallery_ids').val(galleryIds.join(','));
             });
 
-            // Open the modal
+            // Abrir el modal
             galleryFrame.open();
         });
 
-        // Remove single image
+        // Eliminar imagen individual
         $(document).on('click', '.remove-image', function() {
             var imageDiv = $(this).parent();
             var imageId = imageDiv.data('id').toString();
             
-            // Remove from array
+            // Eliminar del array
             galleryIds = galleryIds.filter(function(id) {
                 return id !== imageId;
             });
             
-            // Update hidden input
+            // Actualizar el campo oculto
             $('#custom_gallery_ids').val(galleryIds.join(','));
             
-            // Remove from DOM
+            // Eliminar del DOM
             imageDiv.remove();
         });
 
-        // Clear all images
+        // Limpiar todas las imágenes
         $('#clear-gallery-images').on('click', function(e) {
             e.preventDefault();
             
-            if (confirm('<?php echo esc_js(__('Are you sure you want to remove all images?', 'xarop')); ?>')) {
+            if (confirm('<?php echo esc_js(__('¿Estás seguro de que quieres eliminar todas las imágenes?', 'xarop')); ?>')) {
                 galleryIds = [];
                 $('#custom_gallery_ids').val('');
                 $('#gallery-preview').empty();
             }
         });
 
-        // Make gallery sortable
+        // Hacer la galería ordenable
         if (typeof $.fn.sortable !== 'undefined') {
             $('#gallery-preview').sortable({
                 update: function() {
@@ -226,35 +226,35 @@ function xarop_gallery_meta_box_callback( $post )
 }
 
 /**
- * Save gallery meta box data
+ * Guardar los datos del meta box de galería
  */
 function xarop_save_gallery_meta_box( $post_id )
 {
-    // Check if nonce is set
+    // Comprobar si el nonce está definido
     if (! isset($_POST['xarop_gallery_nonce_field']) ) {
         return;
     }
 
-    // Verify nonce
+    // Verificar el nonce
     if (! wp_verify_nonce($_POST['xarop_gallery_nonce_field'], 'xarop_gallery_nonce') ) {
         return;
     }
 
-    // Check if this is an autosave
+    // Comprobar si es un autoguardado
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
         return;
     }
 
-    // Check user permissions
+    // Comprobar los permisos del usuario
     if (! current_user_can('edit_post', $post_id) ) {
         return;
     }
 
-    // Sanitize and save the data
+    // Sanear y guardar los datos
     if (isset($_POST['custom_gallery_ids']) ) {
         $gallery_ids = sanitize_text_field($_POST['custom_gallery_ids']);
         
-        // Validate that it's a comma-separated list of numbers
+        // Validar que sea una lista de números separados por comas
         $ids_array = explode(',', $gallery_ids);
         $ids_array = array_filter($ids_array, 'is_numeric');
         $gallery_ids = implode(',', $ids_array);
@@ -267,7 +267,7 @@ function xarop_save_gallery_meta_box( $post_id )
 add_action('save_post', 'xarop_save_gallery_meta_box');
 
 /**
- * Enqueue media uploader scripts
+ * Encolar los scripts del cargador de medios
  */
 function xarop_enqueue_media_uploader()
 {

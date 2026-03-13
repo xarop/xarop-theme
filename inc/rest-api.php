@@ -1,20 +1,20 @@
 <?php
 /**
- * REST API Customizations
+ * Personalizaciones de la REST API
  *
- * Expose custom gallery IDs and shared categories in REST API
+ * Expone IDs de galería personalizada y categorías compartidas en la REST API
  *
  * @package xarop
  * @since   1.0.0
  */
 
-// Exit if accessed directly
+// Salir si se accede directamente
 if (! defined('ABSPATH') ) {
     exit;
 }
 
 /**
- * Add custom gallery field to REST API for Pages
+ * Añadir campo de galería personalizada a la REST API para Páginas
  */
 function xarop_register_gallery_field_page()
 {
@@ -25,7 +25,7 @@ function xarop_register_gallery_field_page()
         'get_callback'    => 'xarop_get_gallery_data',
         'update_callback' => null,
         'schema'          => array(
-                'description' => __('Custom gallery image IDs and URLs', 'xarop'),
+                'description' => __('IDs y URLs de imágenes de la galería personalizada', 'xarop'),
                 'type'        => 'object',
         ),
         )
@@ -34,7 +34,7 @@ function xarop_register_gallery_field_page()
 add_action('rest_api_init', 'xarop_register_gallery_field_page');
 
 /**
- * Add custom gallery field to REST API for posts
+ * Añadir campo de galería personalizada a la REST API para Entradas
  */
 function xarop_register_gallery_field_post()
 {
@@ -45,7 +45,7 @@ function xarop_register_gallery_field_post()
         'get_callback'    => 'xarop_get_gallery_data',
         'update_callback' => null,
         'schema'          => array(
-                'description' => __('Custom gallery image IDs and URLs', 'xarop'),
+                'description' => __('IDs y URLs de imágenes de la galería personalizada', 'xarop'),
                 'type'        => 'object',
         ),
         )
@@ -54,7 +54,7 @@ function xarop_register_gallery_field_post()
 add_action('rest_api_init', 'xarop_register_gallery_field_post');
 
 /**
- * Get gallery data callback
+ * Callback para obtener datos de galería
  */
 function xarop_get_gallery_data( $object )
 {
@@ -273,7 +273,7 @@ function xarop_get_menu_children($all_items, $parent_id)
 }
 
 /**
- * Get filtered posts callback
+ * Callback para obtener entradas filtradas
  */
 function xarop_get_filtered_posts( $request )
 {
@@ -286,7 +286,7 @@ function xarop_get_filtered_posts( $request )
     'post_status'    => 'publish',
     );
 
-    // Add category filter if specified
+    // Añadir filtro de categoría si se especifica
     if ($category && $category !== 'all' ) {
         $args['tax_query'] = array(
         array(
@@ -305,7 +305,7 @@ function xarop_get_filtered_posts( $request )
             $query->the_post();
             $post_id = get_the_ID();
 
-            // Get categories
+            // Obtener categorías
             $terms = get_the_terms($post_id, 'category');
             $categories = array();
 
@@ -319,7 +319,7 @@ function xarop_get_filtered_posts( $request )
                 }
             }
 
-            // Get featured image
+            // Obtener imagen destacada
             $thumbnail_id = get_post_thumbnail_id($post_id);
             $thumbnail = null;
 

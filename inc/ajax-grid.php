@@ -1,31 +1,31 @@
 <?php
 /**
- * AJAX Grid Handler
+ * Manejador AJAX del Grid
  *
- * Handle server-side logic for category-based dynamic grid
+ * Lógica del servidor para el grid dinámico filtrado por categoría
  *
  * @package xarop
  * @since   1.0.0
  */
 
-// Exit if accessed directly
+// Salir si se accede directamente
 if (! defined('ABSPATH') ) {
     exit;
 }
 
 /**
- * AJAX handler for filtering posts by category
+ * Manejador AJAX para filtrar entradas por categoría
  */
 function xarop_filter_posts()
 {
-    // Verify nonce
+    // Verificar nonce
     check_ajax_referer('xarop_nonce', 'nonce');
 
-    // Get parameters
+    // Obtener parámetros
     $category_id = isset($_POST['category']) ? intval($_POST['category']) : 0;
     $posts_per_page = isset($_POST['per_page']) ? intval($_POST['per_page']) : 12;
 
-    // Build query arguments
+    // Construir argumentos de la consulta
     $args = array(
     'post_type'      => 'post',
     'posts_per_page' => $posts_per_page,
@@ -34,7 +34,7 @@ function xarop_filter_posts()
     'order'          => 'DESC',
     );
 
-    // Add category filter if specified
+    // Añadir filtro de categoría si se especifica
     if ($category_id > 0 ) {
         $args['tax_query'] = array(
         array(
@@ -45,10 +45,10 @@ function xarop_filter_posts()
         );
     }
 
-    // Execute query
+    // Ejecutar la consulta
     $query = new WP_Query($args);
 
-    // Prepare response
+    // Preparar la respuesta
     $response = array(
     'success' => false,
     'data'    => array(
@@ -64,7 +64,7 @@ function xarop_filter_posts()
             $query->the_post();
             $post_id = get_the_ID();
 
-            // Get categories
+            // Obtener categorías
             $terms = get_the_terms($post_id, 'category');
             $categories = array();
 
@@ -78,7 +78,7 @@ function xarop_filter_posts()
                 }
             }
 
-            // Get featured image
+            // Obtener imagen destacada
             $thumbnail_id = get_post_thumbnail_id($post_id);
             $thumbnail_url = '';
 
@@ -89,7 +89,7 @@ function xarop_filter_posts()
                 }
             }
 
-            // Get gallery IDs
+            // Obtener IDs de la galería
             $gallery_ids = get_post_meta($post_id, '_custom_gallery_ids', true);
             $gallery_count = 0;
 
@@ -126,11 +126,11 @@ add_action('wp_ajax_filter_posts', 'xarop_filter_posts');
 add_action('wp_ajax_nopriv_filter_posts', 'xarop_filter_posts');
 
 /**
- * AJAX handler for getting all categories
+ * Manejador AJAX para obtener todas las categorías
  */
 function xarop_get_categories()
 {
-    // Verify nonce
+    // Verificar nonce
     check_ajax_referer('xarop_nonce', 'nonce');
 
     $terms = get_terms(
@@ -170,15 +170,15 @@ add_action('wp_ajax_get_categories', 'xarop_get_categories');
 add_action('wp_ajax_nopriv_get_categories', 'xarop_get_categories');
 
 /**
- * AJAX handler for returning post cards HTML using the card.php template-part
+ * Manejador AJAX que devuelve el HTML de las tarjetas usando template-parts/card.php
  * Endpoint: filter_posts_html
  */
 function xarop_filter_posts_html()
 {
-    // Verify nonce (optional, add if needed)
+    // Verificar nonce (opcional, añadir si es necesario)
     // check_ajax_referer('xarop_nonce', 'nonce');
 
-    // Minimal AJAX handler for grid posts
+    // Manejador AJAX para el grid de proyectos
     $category_slug = isset($_POST['category']) && $_POST['category'] !== 'all' ? sanitize_key($_POST['category']) : '';
     $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
     $posts_per_page = get_option('posts_per_page');
@@ -200,9 +200,9 @@ function xarop_filter_posts_html()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            include locate_template('template-parts/card.php'); // Minimal post card
+            include locate_template('template-parts/card.php'); // Tarjeta de proyecto
         }
-        // Pagination
+        // Paginación
         $big = 999999999;
         echo '<div class="pagination">';
         echo paginate_links(
@@ -217,7 +217,7 @@ function xarop_filter_posts_html()
         );
         echo '</div>';
     } else {
-        echo '<div class="no-results"><p>' . esc_html__('No posts found in this category.', 'xarop') . '</p></div>';
+        echo '<div class="no-results"><p>' . esc_html__('No se encontraron entradas en esta categoría.', 'xarop') . '</p></div>';
     }
     wp_reset_postdata();
     $html = ob_get_clean();

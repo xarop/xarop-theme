@@ -45,7 +45,7 @@ if (function_exists('is_front_page') && is_front_page() && isset($GLOBALS['post'
                                 <?php echo wp_trim_words(get_the_excerpt(), 20); ?>
                             </div>
                             <a href="<?php the_permalink(); ?>" class="slide-link">
-                                <?php esc_html_e('Learn More', 'xarop'); ?>
+                                <?php esc_html_e('Ver más', 'xarop'); ?>
                             </a>
                     </div>
                 </div>

@@ -31,13 +31,13 @@ get_header();
             </div>
 
             <?php
-            // Display child grid if this page has a childs
+            // Mostrar la cuadrícula de páginas hijas si las hay
             include locate_template('template-parts/child-grid.php');
-            // Display custom gallery if it exists
+            // Mostrar la galería personalizada si existe
             include locate_template('template-parts/gallery.php');
-            // Display shared categories
+            // Mostrar las categorías
             // include locate_template('template-parts/categories.php');
-            // Display related posts
+            // Mostrar entradas relacionadas
             include locate_template('template-parts/related.php');
             ?>
             <footer class="entry-footer">
@@ -46,7 +46,7 @@ get_header();
                 if ($parent_id) :
                     ?>
                     <a href="<?php echo esc_url(get_permalink($parent_id)); ?>" class="back-link">
-                        &larr; <?php esc_html_e('Back to parent', 'xarop'); ?>
+                        &larr; <?php esc_html_e('Volver al inicio', 'xarop'); ?>
                     </a>
                 <?php endif; ?>
             </footer>

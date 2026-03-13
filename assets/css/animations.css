@@ -1,0 +1,212 @@
+/**
+ * Xarop Theme — Animations Layer
+ *
+ * Subtle CSS-only animations powered by IntersectionObserver (animations.js).
+ * Only loaded when 'animations_enabled' is true in theme-config.php.
+ *
+ * Available classes for any HTML element:
+ *   .animate-on-scroll              → default fade-in
+ *   .animate-on-scroll.reveal-up    → slides up from below
+ *   .animate-on-scroll.reveal-left  → enters from the left
+ *   .animate-on-scroll.reveal-right → enters from the right
+ *   .animate-on-scroll.scale-in     → grows in from center
+ *
+ * All animations respect prefers-reduced-motion for accessibility.
+ *
+ * @package Xarop_Theme
+ * @since   2.0.0
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────
+   INITIAL STATE — Elements hidden before entering the viewport
+   ───────────────────────────────────────────────────────────────────────── */
+
+.animate-on-scroll {
+    opacity: 0;
+    transition:
+        opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+/* Initial transform variants */
+.animate-on-scroll.reveal-up {
+    transform: translateY(28px);
+}
+
+.animate-on-scroll.reveal-left {
+    transform: translateX(-28px);
+}
+
+.animate-on-scroll.reveal-right {
+    transform: translateX(28px);
+}
+
+.animate-on-scroll.scale-in {
+    transform: scale(0.94);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   ACTIVE STATE — .is-visible is added by IntersectionObserver
+   ───────────────────────────────────────────────────────────────────────── */
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   STAGGERED DELAYS — Animate lists and grids in cascade.
+   Add the class to the parent container or directly to child elements.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.animate-on-scroll.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.animate-on-scroll.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.animate-on-scroll.delay-3 {
+    transition-delay: 0.3s;
+}
+
+.animate-on-scroll.delay-4 {
+    transition-delay: 0.4s;
+}
+
+.animate-on-scroll.delay-5 {
+    transition-delay: 0.5s;
+}
+
+/* Automatic delay for direct children of an animated grid */
+.animate-stagger>* {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-stagger.is-visible>*:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.animate-stagger.is-visible>*:nth-child(2) {
+    transition-delay: 0.10s;
+}
+
+.animate-stagger.is-visible>*:nth-child(3) {
+    transition-delay: 0.15s;
+}
+
+.animate-stagger.is-visible>*:nth-child(4) {
+    transition-delay: 0.20s;
+}
+
+.animate-stagger.is-visible>*:nth-child(5) {
+    transition-delay: 0.25s;
+}
+
+.animate-stagger.is-visible>*:nth-child(6) {
+    transition-delay: 0.30s;
+}
+
+.animate-stagger.is-visible>*:nth-child(7) {
+    transition-delay: 0.35s;
+}
+
+.animate-stagger.is-visible>*:nth-child(8) {
+    transition-delay: 0.40s;
+}
+
+.animate-stagger.is-visible>*:nth-child(9) {
+    transition-delay: 0.45s;
+}
+
+.animate-stagger.is-visible>*:nth-child(n+10) {
+    transition-delay: 0.50s;
+}
+
+.animate-stagger.is-visible>* {
+    opacity: 1;
+    transform: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   KEYFRAME ANIMATIONS — For elements that do not depend on scroll
+   ───────────────────────────────────────────────────────────────────────── */
+
+@keyframes xarop-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes xarop-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes xarop-pulse-soft {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Direct animation classes (no scroll trigger) */
+.animate-fade-in {
+    animation: xarop-fade-in 0.5s ease both;
+}
+
+.animate-slide-up {
+    animation: xarop-slide-up 0.5s ease both;
+}
+
+.animate-pulse {
+    animation: xarop-pulse-soft 2s ease infinite;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   ACCESSIBILITY — Respects the system's reduced-motion preference
+   ───────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .animate-on-scroll,
+    .animate-on-scroll.reveal-up,
+    .animate-on-scroll.reveal-left,
+    .animate-on-scroll.reveal-right,
+    .animate-on-scroll.scale-in,
+    .animate-stagger>* {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        animation: none;
+    }
+
+    .animate-fade-in,
+    .animate-slide-up,
+    .animate-pulse {
+        animation: none;
+        opacity: 1;
+    }
+}

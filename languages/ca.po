@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Xarop Theme\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-18 11:53+0000\n"
-"PO-Revision-Date: 2026-02-24 10:00+0000\n"
+"PO-Revision-Date: 2026-03-13 09:51+0000\n"
 "Last-Translator: xarop com\n"
 "Language-Team: Català\n"
 "Language: ca\n"
@@ -12,226 +12,290 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.8.1; wp-6.9.1; php-8.3.29\n"
+"X-Loco-Version: 2.8.2; wp-6.9.4; php-8.3.29\n"
 "X-Domain: xarop"
 
-#: search.php:60 taxonomy-category.php:72
-msgid "&larr; Previous"
-msgstr ""
+#. 1: date, 2: time
+#: inc/comments.php:136
+#, php-format
+msgid "%1$s a las %2$s"
+msgstr "%1$s a les %2$s"
+
+#: inc/ajax-grid.php:214 template-parts/grid.php:111
+msgid "&laquo;"
+msgstr "«"
+
+#: search.php:36 taxonomy-category.php:72
+msgid "&larr; Anterior"
+msgstr "← Anterior"
+
+#: inc/ajax-grid.php:215 template-parts/grid.php:112
+msgid "&raquo;"
+msgstr "»"
 
 #: 404.php:15
-msgid "404 - Page Not Found"
-msgstr ""
+msgid "404 - Página no encontrada"
+msgstr "404 - Pàgina no trobada"
 
 #. Description of the theme
 msgid ""
 "A custom, high-performance, headless-ready WordPress theme with zero plugin "
 "dependencies. Modular, lightweight, and fully translatable."
 msgstr ""
+"Un tema de WordPress personalitzat, d'alt rendiment i headless-ready, sense "
+"dependències de complements. Modular, lleuger i totalment traduïble."
+
+#: header.php:51
+msgid "Abrir menú"
+msgstr "Obrir menú"
 
 #: inc/meta-boxes.php:71
 msgid "Add Images"
-msgstr ""
-
-#: inc/post-types.php:14 inc/post-types.php:31 inc/post-types.php:32
-msgid "Add New Project"
-msgstr ""
+msgstr "Afegeix imatges"
 
 #: inc/meta-boxes.php:147
 msgid "Add to Gallery"
-msgstr ""
+msgstr "Afegeix a la galeria"
 
-#: template-parts/grid.php:39
-msgid "All"
-msgstr "Tot"
-
-#: inc/post-types.php:39
-msgid "All Projects"
-msgstr "Tots els Projectes"
+#: inc/headless.php:139
+msgid "API Base:"
+msgstr "Base de l'API:"
 
 #: inc/meta-boxes.php:204
 msgid "Are you sure you want to remove all images?"
-msgstr ""
+msgstr "Esteu segur que voleu eliminar totes les imatges?"
 
-#: page.php:49
-msgid "Back to parent"
-msgstr ""
+#: searchform.php:7
+msgid "Buscar"
+msgstr "Buscar"
 
-#: single.php:45
-msgid "Back to posts"
-msgstr ""
+#: searchform.php:3
+msgid "Buscar:"
+msgstr "Buscar:"
 
-#: template-parts/categories.php:18
-msgid "Categories"
-msgstr ""
+#: comments.php:65
+msgid "Cancelar respuesta"
+msgstr "Cancel·la la resposta"
 
 #. %s: Category name
 #: taxonomy-category.php:21
 #, php-format
-msgid "Category: %s"
-msgstr ""
+msgid "Categoría: %s"
+msgstr "Categoria: %s"
+
+#: template-parts/categories.php:18
+msgid "Categorías"
+msgstr "Categories"
+
+#: inc/headless.php:150
+msgid "cd _headless && npm install && npm run dev"
+msgstr "cd _headless && npm instal·la && npm executa dev"
 
 #: inc/meta-boxes.php:74
 msgid "Clear All"
-msgstr ""
+msgstr "Esborra-ho tot"
+
+#: comments.php:69
+msgid "Comentario"
+msgstr "Comentari"
+
+#: comments.php:51
+msgid "Comentarios anteriores"
+msgstr "Comentaris anteriors"
+
+#: comments.php:52
+msgid "Comentarios siguientes"
+msgstr "Comentaris següents"
+
+#. 1: comment count, 2: post title
+#: comments.php:26
+#, php-format
+msgctxt "comments title"
+msgid "%1$s comentario en &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s comentarios en &ldquo;%2$s&rdquo;"
+msgstr[0] "Comentari de %1$s a “%2$s”"
+msgstr[1] "%1$s comentaris a “%2$s”"
 
 #: inc/meta-boxes.php:26
 msgid "Custom Gallery"
-msgstr ""
+msgstr "Galeria personalitzada"
 
 #: inc/rest-api.php:28 inc/rest-api.php:48
 msgid "Custom gallery image IDs and URLs"
-msgstr ""
+msgstr "ID i URL d'imatges de galeria personalitzades"
+
+#: comments.php:63
+msgid "Deja un comentario"
+msgstr "Deixa un comentari"
 
 #. %s: WordPress
-#: footer.php:20
+#: footer.php:15
 #, php-format
-msgid "Developed in Barcelona by %s"
-msgstr ""
+msgid "Desarrollado en Barcelona por %s"
+msgstr "Desarrollat a Barcelona per %s"
 
-#: inc/post-types.php:33
-msgid "Edit Project"
+#: inc/headless.php:137
+msgid ""
+"El front-end nativo de WordPress está desactivado. El contenido se sirve "
+"exclusivamente a través de la REST API."
 msgstr ""
+"El front-end natiu de WordPress està desactivat. El contingut es serveix "
+"exclusivament a través de la REST API."
 
-#: footer.php:26 functions.php:67
-msgid "Footer Menu"
-msgstr ""
+#: inc/headless.php:143
+msgid "Endpoints Xarop:"
+msgstr "Punts finals Xarop:"
+
+#: 404.php:23
+msgid "Entradas recientes"
+msgstr "Entrades recents"
+
+#: template-parts/related.php:27
+msgid "Entradas relacionadas"
+msgstr "Entrades relacionades"
+
+#: inc/comments.php:107
+msgid "Feed"
+msgstr "Feed"
+
+#: template-parts/grid.php:54
+msgid "Filtrar por categoría"
+msgstr "Filtrar per categoria"
 
 #. Name of the template
 #: front-page.php:2
 msgid "Front Page"
-msgstr ""
+msgstr "Pàgina principal"
+
+#: inc/headless.php:148
+msgid "Front-end Vite:"
+msgstr "Vite frontal:"
 
 #. Author URI of the theme
 msgid "https://xarop.com"
-msgstr ""
+msgstr "https://xarop.com"
 
 #. URI of the theme
 msgid "https://xarop.com/xarop-theme"
+msgstr "https://xarop.com/xarop-theme"
+
+#: search.php:45
+msgid ""
+"Lo sentimos, tu búsqueda no encontró resultados. Prueba con otras palabras."
 msgstr ""
+"Lo sentimos, la teva recerca no va trobar resultats. Prueba amb altres "
+"paraules."
 
-#: 404.php:19
-msgid "It looks like nothing was found at this location. Maybe try searching?"
-msgstr ""
+#: comments.php:58
+msgid "Los comentarios están cerrados."
+msgstr "Los comentarios estan cerrados."
 
-#: template-parts/slider.php:48
-msgid "Learn More"
-msgstr "Saber més"
+#: footer.php:21 functions.php:95
+msgid "Menú de pie"
+msgstr "Menú de pastissos"
 
-#: functions.php:66 header.php:61
-msgid "Main Menu"
-msgstr ""
+#: functions.php:94 header.php:61
+msgid "Menú principal"
+msgstr "Menú principal"
 
-#: inc/post-types.php:34
-msgid "New Project"
-msgstr ""
-
-#: search.php:61 taxonomy-category.php:73
-msgid "Next &rarr;"
-msgstr ""
-
-#: taxonomy-category.php:80
-msgid "No items found in this category."
-msgstr ""
-
-#: inc/ajax-grid.php:210
+#: inc/ajax-grid.php:220
 msgid "No posts found in this category."
-msgstr ""
+msgstr "No s'han trobat publicacions en aquesta categoria."
 
 #: inc/ajax-grid.php:120
 msgid "No posts found."
-msgstr ""
+msgstr "No s'han trobat publicacions."
 
-#: inc/post-types.php:37
-msgid "No projects found"
-msgstr ""
+#: taxonomy-category.php:80
+msgid "No se encontraron elementos en esta categoría."
+msgstr "No es troben elements en aquesta categoria."
 
-#: inc/post-types.php:38
-msgid "No projects found in Trash"
-msgstr ""
+#: archive.php:51
+msgid "No se encontraron entradas."
+msgstr "No es van trobar entrades."
 
-#: search.php:70
-msgid "Nothing Found"
-msgstr ""
+#: 404.php:19
+msgid "Parece que no se encontró nada en esta ubicación. ¿Quieres buscar?"
+msgstr "Parece que no es va trobar res en aquesta ubicació. ¿Quieres buscar?"
 
 #: searchform.php:4
 msgctxt "placeholder"
-msgid "Search &hellip;"
-msgstr ""
+msgid "Buscar&hellip;"
+msgstr "Buscar…"
 
-#: inc/post-types.php:30 inc/post-types.php:41
-msgid "Project"
-msgstr ""
-
-#: inc/post-types.php:8 inc/post-types.php:16 inc/post-types.php:29
-#: inc/post-types.php:40
-msgid "Projects"
-msgstr ""
-
-#: search.php:50
-msgid "Read More"
-msgstr ""
-
-#: 404.php:23
-msgid "Recent posts"
-msgstr ""
-
-#: template-parts/related.php:26
-msgid "Related posts"
-msgstr ""
+#: comments.php:66
+msgid "Publicar comentario"
+msgstr "Publicar comentari"
 
 #: inc/meta-boxes.php:61 inc/meta-boxes.php:169
 msgid "Remove"
-msgstr ""
+msgstr "Elimina"
 
-#: searchform.php:7
-msgid "Search"
-msgstr ""
-
-#: searchform.php:3
-msgid "Search for:"
-msgstr ""
-
-#: inc/post-types.php:36
-msgid "Search Projects"
-msgstr ""
+#: comments.php:64
+#, php-format
+msgid "Responder a %s"
+msgstr "Resposta a %s"
 
 #. %s: search query
-#: search.php:17
+#: search.php:18
 #, php-format
-msgid "Search Results for: %s"
-msgstr ""
+msgid "Resultados de búsqueda para: %s"
+msgstr "Resultats de la cerca per a: %s"
 
 #: inc/meta-boxes.php:145
 msgid "Select Gallery Images"
-msgstr ""
+msgstr "Selecciona imatges de la galeria"
 
 #: inc/meta-boxes.php:79
 msgid "Select multiple images from the media library to create a gallery."
 msgstr ""
+"Seleccioneu diverses imatges de la biblioteca multimèdia per crear una "
+"galeria."
 
 #: inc/rest-api.php:129 inc/rest-api.php:149
 msgid "Shared categories taxonomy terms"
-msgstr ""
+msgstr "Termes de taxonomia de categories compartides"
 
-#: search.php:71
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with "
-"different keywords."
-msgstr ""
+#: search.php:37 taxonomy-category.php:73
+msgid "Siguiente &rarr;"
+msgstr "Següent →"
 
-#: header.php:51
-msgid "Toggle Menu"
-msgstr ""
+#: template-parts/grid.php:118
+msgid "Sin entradas."
+msgstr "Sense entrades."
 
-#: inc/post-types.php:35
-msgid "View Project"
-msgstr ""
+#: search.php:44
+msgid "Sin resultados"
+msgstr "Sense resultats"
+
+#: template-parts/grid.php:56
+msgid "Todos"
+msgstr "Tots"
+
+#: inc/comments.php:148
+msgid "Tu comentario está pendiente de moderación."
+msgstr "El teu comentari està pendent de moderació."
+
+#: template-parts/slider.php:48
+msgid "Ver más"
+msgstr "Veure més"
+
+#: single.php:50
+msgid "Volver a proyectos"
+msgstr "Tornar a projectes"
+
+#: page.php:49
+msgid "Volver al inicio"
+msgstr "Torna a l'inici"
 
 #. Name of the theme
 msgid "Xarop Theme"
-msgstr ""
+msgstr "Tema Xarop"
+
+#: inc/headless.php:136
+msgid "Xarop — Modo Headless Activo"
+msgstr "Xarop — Modo Headless Activo"
 
 #. Author of the theme
 msgid "xarop.com"
-msgstr ""
+msgstr "xarop.com"

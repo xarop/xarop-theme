@@ -21,7 +21,7 @@ if (!empty($child_pages)) : ?>
         <div class="grid">
             <?php foreach ($child_pages as $child) : ?>
                 <?php
-                // Set up $post for card.php
+                // Configurar $post para card.php
                 $post = get_post($child->ID);
                 setup_postdata($post);
                 include locate_template('template-parts/card.php');

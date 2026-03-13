@@ -12,13 +12,13 @@
                 ·
                 <?php
                 /* translators: %s: WordPress */
-                printf(esc_html__('Developed in Barcelona by %s', 'xarop'), '<a href="https://xarop.com/">xarop.com</a>');
+                printf(esc_html__('Desarrollado en Barcelona por %s', 'xarop'), '<a href="https://xarop.com/">xarop.com</a>');
                 ?>
             
         </div>
 
         <?php if (has_nav_menu('footer-menu') ) : ?>
-            <nav class="footer-navigation" role="navigation" aria-label="<?php esc_attr_e('Footer Menu', 'xarop'); ?>">
+            <nav class="footer-navigation" role="navigation" aria-label="<?php esc_attr_e('Menú de pie', 'xarop'); ?>">
             <?php
             wp_nav_menu(
                 array(

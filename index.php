@@ -20,7 +20,7 @@ get_header();
             } else {
                 $title = get_bloginfo('name');
             }
-            // Get all categories for filters
+            // Obtener todas las categorías para los filtros
             $categories = get_terms(
                 array(
                 'taxonomy'   => 'category',

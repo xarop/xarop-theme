@@ -31,22 +31,28 @@ get_header();
             </div>
 
             <?php
-            // Display custom gallery if it exists
+            // Mostrar la galería personalizada si existe
             include locate_template('template-parts/gallery.php');
-            // Display shared categories
+            // Mostrar las categorías
             include locate_template('template-parts/categories.php');
-            // Display related posts
+            $xarop_config = xarop_get_config();
+            // Mostrar comentarios si están activados y el post tiene comentarios abiertos
+            if ($xarop_config['comments_enabled'] && ( comments_open() || get_comments_number() ) ) {
+                comments_template();
+            }
+            // Mostrar entradas relacionadas
             include locate_template('template-parts/related.php');
             ?>
 
        
             <footer class="entry-footer">
                 <a href="<?php echo esc_url(get_post_type_archive_link('post')); ?>" class="back-link">
-                    &larr; <?php esc_html_e('Back to posts', 'xarop'); ?>
+                    &larr; <?php esc_html_e('Volver a proyectos', 'xarop'); ?>
                 </a>
             </footer>
 
         </article>
+
 
     <?php endwhile; ?>
 </div>

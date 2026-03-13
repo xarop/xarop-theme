@@ -12,10 +12,10 @@ get_header();
 
 
 <?php
-// Home Slider Configuration
+// Configuración del slider principal
 $slider_config = array(
-    'type' => 'pages', // 'pages' or 'posts'
-    'ids'  => array(1327,1102), // Will be filled with all published IDs
+    'type' => 'pages', // 'pages' (páginas) o 'posts' (entradas)
+    'ids'  => array(1327,1102), // Se rellena con los IDs publicados
 );
 $slider_posts = get_posts(
     array(
@@ -47,7 +47,7 @@ require locate_template('template-parts/slider.php');
 <section id="main" class="container">
     <div class="container-inner ">
         <?php
-        // Display page content if it exists
+        // Mostrar el contenido de la página si existe
         if (have_posts() ) :
             while ( have_posts() ) :
                 the_post();
@@ -68,7 +68,7 @@ require locate_template('template-parts/slider.php');
     <div class="container">
             
          <?php 
-            // Get all categories for filters
+            // Obtener todas las categorías para los filtros
             $categories = get_terms(
                 array(
                 'taxonomy'   => 'category',
@@ -85,7 +85,7 @@ require locate_template('template-parts/slider.php');
 <section class="section">
     <div class="container">
         <?php
-        // Display custom gallery if it exists
+        // Mostrar la galería personalizada si existe
             require locate_template('template-parts/gallery.php');
         ?>
     </div>
