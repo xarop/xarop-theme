@@ -48,7 +48,7 @@ get_header();
         </div>
 
     <?php else : ?>
-        <p class="text-center"><?php esc_html_e('No se encontraron entradas.', 'xarop'); ?></p>
+        <p class="text-center"><?php esc_html_e('No posts found.', 'xarop'); ?></p>
     <?php endif; ?>
 </div>
 

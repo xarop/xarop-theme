@@ -48,7 +48,7 @@
 
         <!-- CSS-Only Hamburger Menu -->
         <input type="checkbox" id="menu-toggle" />
-        <label for="menu-toggle" class="menu-toggle-label" aria-label="<?php esc_attr_e('Abrir menú', 'xarop'); ?>">
+        <label for="menu-toggle" class="menu-toggle-label" aria-label="<?php esc_attr_e('Open menu', 'xarop'); ?>">
             <span></span>
             <span></span>
             <span></span>
@@ -58,7 +58,7 @@
         <div class="menu-overlay"></div>
 
         <!-- Main Navigation -->
-        <nav class="main-navigation" role="navigation" aria-label="<?php esc_attr_e('Menú principal', 'xarop'); ?>">
+        <nav class="main-navigation" role="navigation" aria-label="<?php esc_attr_e('Main menu', 'xarop'); ?>">
             <?php
             function xarop_mobile_logo()
             {

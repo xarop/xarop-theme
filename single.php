@@ -47,7 +47,7 @@ get_header();
        
             <footer class="entry-footer">
                 <a href="<?php echo esc_url(get_post_type_archive_link('post')); ?>" class="back-link">
-                    &larr; <?php esc_html_e('Volver a proyectos', 'xarop'); ?>
+                    &larr; <?php esc_html_e('Back to projects', 'xarop'); ?>
                 </a>
             </footer>
 

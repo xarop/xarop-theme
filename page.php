@@ -46,7 +46,7 @@ get_header();
                 if ($parent_id) :
                     ?>
                     <a href="<?php echo esc_url(get_permalink($parent_id)); ?>" class="back-link">
-                        &larr; <?php esc_html_e('Volver al inicio', 'xarop'); ?>
+                        &larr; <?php esc_html_e('Back to home', 'xarop'); ?>
                     </a>
                 <?php endif; ?>
             </footer>

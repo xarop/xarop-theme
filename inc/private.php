@@ -188,7 +188,7 @@ function xarop_maintenance_html( string $title, string $message, string $logo_ht
         <h1><?php echo $title; ?></h1>
         <p><?php echo $message; ?></p>
         <a href="<?php echo $login_url; ?>" class="maintenance-login">
-            <?php esc_html_e('Acceder', 'xarop-theme'); ?>
+            <?php esc_html_e('Log in', 'xarop'); ?>
         </a>
     </div>
 </body>

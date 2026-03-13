@@ -51,9 +51,9 @@ if ($has_posts) :
     <?php endif; ?>
 
     <?php if ($show_filters && !empty($categories) && !is_wp_error($categories)) : ?>
-        <div class="category-filters" role="group" aria-label="<?php esc_attr_e('Filtrar por categoría', 'xarop'); ?>">
+        <div class="category-filters" role="group" aria-label="<?php esc_attr_e('Filter by category', 'xarop'); ?>">
             <button type="button" data-category="all" class="filter-btn<?php echo (!isset($_GET['category']) || $_GET['category'] === 'all') ? ' active' : ''; ?>">
-                <?php esc_html_e('Todos', 'xarop'); ?>
+                <?php esc_html_e('All', 'xarop'); ?>
             </button>
             <?php foreach ($categories as $category) : ?>
                 <button type="button" data-category="<?php echo esc_attr($category->slug); ?>" class="filter-btn<?php echo (isset($_GET['category']) && $_GET['category'] === $category->slug) ? ' active' : ''; ?>">
@@ -115,7 +115,7 @@ if ($has_posts) :
             echo '</div>';
             wp_reset_postdata();
         else:
-            echo '<p>' . esc_html__('Sin entradas.', 'xarop') . '</p>';
+            echo '<p>' . esc_html__('No posts found.', 'xarop') . '</p>';
         endif;
         ?>
     </div>

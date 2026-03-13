@@ -18,7 +18,7 @@ get_header();
         <h1 class="page-title">
             <?php
             /* translators: %s: Category name */
-            printf(esc_html__('Categoría: %s', 'xarop'), '<span>' . esc_html($term->name) . '</span>');
+            printf(esc_html__('Category: %s', 'xarop'), '<span>' . esc_html($term->name) . '</span>');
             ?>
         </h1>
         
@@ -69,15 +69,15 @@ get_header();
         <?php
         the_posts_pagination(
             array(
-            'prev_text' => __('&larr; Anterior', 'xarop'),
-            'next_text' => __('Siguiente &rarr;', 'xarop'),
+            'prev_text' => __('&larr; Previous', 'xarop'),
+            'next_text' => __('Next &rarr;', 'xarop'),
             )
         );
         ?>
 
     <?php else : ?>
         <div class="no-results">
-            <p><?php esc_html_e('No se encontraron elementos en esta categoría.', 'xarop'); ?></p>
+            <p><?php esc_html_e('No items found in this category.', 'xarop'); ?></p>
         </div>
     <?php endif; ?>
 </div>

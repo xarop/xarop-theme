@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xarop Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-13 09:47+0000\n"
+"POT-Creation-Date: 2026-03-13 11:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -27,7 +27,7 @@ msgid "&laquo;"
 msgstr ""
 
 #: search.php:36 taxonomy-category.php:72
-msgid "&larr; Anterior"
+msgid "&larr; Previous"
 msgstr ""
 
 #: inc/ajax-grid.php:215 template-parts/grid.php:112
@@ -35,7 +35,7 @@ msgid "&raquo;"
 msgstr ""
 
 #: 404.php:15
-msgid "404 - Página no encontrada"
+msgid "404 - Page not found"
 msgstr ""
 
 #. Description of the theme
@@ -44,93 +44,127 @@ msgid ""
 "dependencies. Modular, lightweight, and fully translatable."
 msgstr ""
 
-#: header.php:51
-msgid "Abrir menú"
+#: template-parts/grid.php:56
+msgid "All"
 msgstr ""
 
-#: inc/meta-boxes.php:71
-msgid "Add Images"
+#: functions.php:122
+msgid "Alt background"
 msgstr ""
 
-#: inc/meta-boxes.php:147
-msgid "Add to Gallery"
+#: inc/customizer.php:69
+msgid "Alternate background"
+msgstr ""
+
+#: inc/customizer.php:173
+msgid "Animations"
 msgstr ""
 
 #: inc/headless.php:139
 msgid "API Base:"
 msgstr ""
 
-#: inc/meta-boxes.php:204
-msgid "Are you sure you want to remove all images?"
+#: inc/meta-boxes.php:147
+msgid "Añadir a la galería"
 msgstr ""
 
-#: searchform.php:7
-msgid "Buscar"
+#: inc/meta-boxes.php:71
+msgid "Añadir imágenes"
 msgstr ""
 
-#: searchform.php:3
-msgid "Buscar:"
+#: page.php:49
+msgid "Back to home"
+msgstr ""
+
+#: single.php:50
+msgid "Back to projects"
+msgstr ""
+
+#: functions.php:121
+msgid "Background"
+msgstr ""
+
+#: inc/customizer.php:68
+msgid "Base background"
+msgstr ""
+
+#: inc/customizer.php:115
+msgid "Base size (px, rem…)"
+msgstr ""
+
+#: inc/customizer.php:157
+msgid "Block editor (Gutenberg)"
+msgstr ""
+
+#: inc/customizer.php:161
+msgid "Blog / Posts"
+msgstr ""
+
+#: inc/customizer.php:112
+msgid "Body font"
+msgstr ""
+
+#: functions.php:123
+msgid "Border"
+msgstr ""
+
+#: inc/customizer.php:70
+msgid "Borders and dividers"
+msgstr ""
+
+#: inc/meta-boxes.php:74
+msgid "Borrar todo"
 msgstr ""
 
 #: comments.php:65
-msgid "Cancelar respuesta"
+msgid "Cancel reply"
+msgstr ""
+
+#: template-parts/categories.php:18
+msgid "Categories"
 msgstr ""
 
 #. %s: Category name
 #: taxonomy-category.php:21
 #, php-format
-msgid "Categoría: %s"
-msgstr ""
-
-#: template-parts/categories.php:18
-msgid "Categorías"
+msgid "Category: %s"
 msgstr ""
 
 #: inc/headless.php:150
 msgid "cd _headless && npm install && npm run dev"
 msgstr ""
 
-#: inc/meta-boxes.php:74
-msgid "Clear All"
+#: inc/customizer.php:56
+msgid "Colors"
 msgstr ""
 
 #: comments.php:69
-msgid "Comentario"
+msgid "Comment"
 msgstr ""
 
-#: comments.php:51
-msgid "Comentarios anteriores"
+#: comments.php:58
+msgid "Comments are closed."
 msgstr ""
 
-#: comments.php:52
-msgid "Comentarios siguientes"
+#: inc/customizer.php:165
+msgid "Comments system"
 msgstr ""
 
 #. 1: comment count, 2: post title
 #: comments.php:26
 #, php-format
 msgctxt "comments title"
-msgid "%1$s comentario en &ldquo;%2$s&rdquo;"
-msgid_plural "%1$s comentarios en &ldquo;%2$s&rdquo;"
+msgid "%1$s comment on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s comments on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/meta-boxes.php:26
-msgid "Custom Gallery"
+#: inc/customizer.php:162
+msgid "Disable on sites with no blog or news section."
 msgstr ""
 
-#: inc/rest-api.php:28 inc/rest-api.php:48
-msgid "Custom gallery image IDs and URLs"
-msgstr ""
-
-#: comments.php:63
-msgid "Deja un comentario"
-msgstr ""
-
-#. %s: WordPress
-#: footer.php:15
-#, php-format
-msgid "Desarrollado en Barcelona por %s"
+#: inc/customizer.php:158
+msgid "Disable to remove the block editor entirely."
 msgstr ""
 
 #: inc/headless.php:137
@@ -139,16 +173,24 @@ msgid ""
 "exclusivamente a través de la REST API."
 msgstr ""
 
+#: inc/meta-boxes.php:61 inc/meta-boxes.php:169
+msgid "Eliminar"
+msgstr ""
+
+#: inc/customizer.php:229
+msgid "Enable maintenance mode"
+msgstr ""
+
+#: inc/customizer.php:166
+msgid "Enable to show the comment form on posts and pages."
+msgstr ""
+
 #: inc/headless.php:143
 msgid "Endpoints Xarop:"
 msgstr ""
 
-#: 404.php:23
-msgid "Entradas recientes"
-msgstr ""
-
-#: template-parts/related.php:27
-msgid "Entradas relacionadas"
+#: inc/customizer.php:149
+msgid "Features"
 msgstr ""
 
 #: inc/comments.php:107
@@ -156,7 +198,11 @@ msgid "Feed"
 msgstr ""
 
 #: template-parts/grid.php:54
-msgid "Filtrar por categoría"
+msgid "Filter by category"
+msgstr ""
+
+#: footer.php:21 functions.php:101
+msgid "Footer menu"
 msgstr ""
 
 #. Name of the template
@@ -168,6 +214,27 @@ msgstr ""
 msgid "Front-end Vite:"
 msgstr ""
 
+#: inc/meta-boxes.php:26
+msgid "Galería personalizada"
+msgstr ""
+
+#: inc/customizer.php:44
+msgid "Global theme settings. Changes made here override theme-config.php."
+msgstr ""
+
+#: inc/customizer.php:113
+msgid "Heading font"
+msgstr ""
+
+#: inc/customizer.php:169
+msgid "Headless mode"
+msgstr ""
+
+#: inc/customizer.php:210
+msgid ""
+"Hides the site from unauthenticated visitors and shows a custom message."
+msgstr ""
+
 #. Author URI of the theme
 msgid "https://xarop.com"
 msgstr ""
@@ -176,112 +243,199 @@ msgstr ""
 msgid "https://xarop.com/xarop-theme"
 msgstr ""
 
-#: search.php:45
-msgid ""
-"Lo sentimos, tu búsqueda no encontró resultados. Prueba con otras palabras."
+#: inc/rest-api.php:28 inc/rest-api.php:48
+msgid "IDs and URLs of custom gallery images"
 msgstr ""
 
-#: comments.php:58
-msgid "Los comentarios están cerrados."
+#: comments.php:63
+msgid "Leave a comment"
 msgstr ""
 
-#: footer.php:21 functions.php:95
-msgid "Menú de pie"
+#: inc/customizer.php:116
+msgid "Line height"
 msgstr ""
 
-#: functions.php:94 header.php:61
-msgid "Menú principal"
+#: inc/customizer.php:174
+msgid "Loads animations.css and the scroll observer script."
 msgstr ""
 
-#: inc/ajax-grid.php:220
-msgid "No posts found in this category."
+#: inc/private.php:191
+msgid "Log in"
 msgstr ""
 
-#: inc/ajax-grid.php:120
-msgid "No posts found."
+#. %s: WordPress
+#: footer.php:15
+#, php-format
+msgid "Made in Barcelona by %s"
+msgstr ""
+
+#: functions.php:100 header.php:61
+msgid "Main menu"
+msgstr ""
+
+#: inc/customizer.php:66
+msgid "Main text"
+msgstr ""
+
+#: inc/customizer.php:209
+msgid "Maintenance mode"
+msgstr ""
+
+#: inc/customizer.php:269
+msgid "Message for visitors"
+msgstr ""
+
+#: inc/customizer.php:114
+msgid "Monospace font"
+msgstr ""
+
+#: comments.php:52
+msgid "Newer comments"
+msgstr ""
+
+#: search.php:37 taxonomy-category.php:73
+msgid "Next &rarr;"
 msgstr ""
 
 #: taxonomy-category.php:80
-msgid "No se encontraron elementos en esta categoría."
+msgid "No items found in this category."
 msgstr ""
 
-#: archive.php:51
-msgid "No se encontraron entradas."
+#: archive.php:51 inc/ajax-grid.php:120 template-parts/grid.php:118
+msgid "No posts found."
+msgstr ""
+
+#: search.php:44
+msgid "No results"
+msgstr ""
+
+#: inc/ajax-grid.php:220
+msgid "No se encontraron entradas en esta categoría."
 msgstr ""
 
 #: 404.php:19
-msgid "Parece que no se encontró nada en esta ubicación. ¿Quieres buscar?"
+msgid "Nothing was found at this location. Try searching?"
+msgstr ""
+
+#: comments.php:51
+msgid "Older comments"
+msgstr ""
+
+#: inc/customizer.php:230
+msgid "Only logged-in users will be able to view the site."
+msgstr ""
+
+#: header.php:51
+msgid "Open menu"
+msgstr ""
+
+#: inc/customizer.php:249
+msgid "Page title"
 msgstr ""
 
 #: searchform.php:4
 msgctxt "placeholder"
-msgid "Buscar&hellip;"
+msgid "Search&hellip;"
 msgstr ""
 
 #: comments.php:66
-msgid "Publicar comentario"
+msgid "Post comment"
 msgstr ""
 
-#: inc/meta-boxes.php:61 inc/meta-boxes.php:169
-msgid "Remove"
+#: functions.php:116
+msgid "Primary"
+msgstr ""
+
+#: inc/customizer.php:63
+msgid "Primary color"
+msgstr ""
+
+#: functions.php:117
+msgid "Primary dark"
+msgstr ""
+
+#: inc/customizer.php:64
+msgid "Primary dark (hover)"
+msgstr ""
+
+#: functions.php:118
+msgid "Primary light"
+msgstr ""
+
+#: inc/customizer.php:65
+msgid "Primary light (highlights)"
+msgstr ""
+
+#: template-parts/slider.php:48
+msgid "Read more"
+msgstr ""
+
+#: 404.php:23
+msgid "Recent posts"
+msgstr ""
+
+#: inc/customizer.php:170
+msgid "Redirects the front-end to the REST API URL."
+msgstr ""
+
+#: template-parts/related.php:27
+msgid "Related posts"
 msgstr ""
 
 #: comments.php:64
 #, php-format
-msgid "Responder a %s"
+msgid "Reply to %s"
+msgstr ""
+
+#: searchform.php:7
+msgid "Search"
 msgstr ""
 
 #. %s: search query
 #: search.php:18
 #, php-format
-msgid "Resultados de búsqueda para: %s"
+msgid "Search results for: %s"
 msgstr ""
 
-#: inc/meta-boxes.php:145
-msgid "Select Gallery Images"
+#: searchform.php:3
+msgid "Search:"
+msgstr ""
+
+#: functions.php:120 inc/customizer.php:67
+msgid "Secondary text"
 msgstr ""
 
 #: inc/meta-boxes.php:79
-msgid "Select multiple images from the media library to create a gallery."
+msgid ""
+"Selecciona varias imágenes de la biblioteca de medios para crear una galería."
+msgstr ""
+
+#: inc/meta-boxes.php:145
+msgid "Seleccionar imágenes de la galería"
 msgstr ""
 
 #: inc/rest-api.php:129 inc/rest-api.php:149
 msgid "Shared categories taxonomy terms"
 msgstr ""
 
-#: search.php:37 taxonomy-category.php:73
-msgid "Siguiente &rarr;"
+#: search.php:45
+msgid "Sorry, no results matched your search. Please try different keywords."
 msgstr ""
 
-#: template-parts/grid.php:118
-msgid "Sin entradas."
-msgstr ""
-
-#: search.php:44
-msgid "Sin resultados"
-msgstr ""
-
-#: template-parts/grid.php:56
-msgid "Todos"
+#: functions.php:119
+msgid "Text"
 msgstr ""
 
 #: inc/comments.php:148
 msgid "Tu comentario está pendiente de moderación."
 msgstr ""
 
-#: template-parts/slider.php:48
-msgid "Ver más"
-msgstr ""
-
-#: single.php:50
-msgid "Volver a proyectos"
-msgstr ""
-
-#: page.php:49
-msgid "Volver al inicio"
+#: inc/customizer.php:105
+msgid "Typography"
 msgstr ""
 
 #. Name of the theme
+#: inc/customizer.php:43
 msgid "Xarop Theme"
 msgstr ""
 
@@ -291,4 +445,8 @@ msgstr ""
 
 #. Author of the theme
 msgid "xarop.com"
+msgstr ""
+
+#: inc/meta-boxes.php:204
+msgid "¿Estás seguro de que quieres eliminar todas las imágenes?"
 msgstr ""

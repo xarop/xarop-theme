@@ -97,8 +97,8 @@ function xarop_setup()
     );
     register_nav_menus(
         [
-        'main-menu'   => __('Menú principal', 'xarop'),
-        'footer-menu' => __('Menú de pie', 'xarop'),
+        'main-menu'   => __('Main menu', 'xarop'),
+        'footer-menu' => __('Footer menu', 'xarop'),
          ] 
     );
 
@@ -113,14 +113,14 @@ function xarop_setup()
 
         add_theme_support(
             'editor-color-palette', [
-            [ 'name' => __('Principal',          'xarop'), 'slug' => 'primary',       'color' => $c['primary']       ?? '' ],
-            [ 'name' => __('Principal oscuro',   'xarop'), 'slug' => 'primary-dark',  'color' => $c['primary_dark']  ?? '' ],
-            [ 'name' => __('Principal claro',    'xarop'), 'slug' => 'primary-light', 'color' => $c['primary_light'] ?? '' ],
-            [ 'name' => __('Texto',              'xarop'), 'slug' => 'text',          'color' => $c['text']          ?? '' ],
-            [ 'name' => __('Texto secundario',   'xarop'), 'slug' => 'text-light',    'color' => $c['text_light']    ?? '' ],
-            [ 'name' => __('Fondo',              'xarop'), 'slug' => 'bg',            'color' => $c['bg']            ?? '' ],
-            [ 'name' => __('Fondo alternativo',  'xarop'), 'slug' => 'bg-alt',        'color' => $c['bg_alt']        ?? '' ],
-            [ 'name' => __('Borde',              'xarop'), 'slug' => 'border',        'color' => $c['border']        ?? '' ],
+            [ 'name' => __('Primary',           'xarop'), 'slug' => 'primary',       'color' => $c['primary']       ?? '' ],
+            [ 'name' => __('Primary dark',       'xarop'), 'slug' => 'primary-dark',  'color' => $c['primary_dark']  ?? '' ],
+            [ 'name' => __('Primary light',      'xarop'), 'slug' => 'primary-light', 'color' => $c['primary_light'] ?? '' ],
+            [ 'name' => __('Text',               'xarop'), 'slug' => 'text',          'color' => $c['text']          ?? '' ],
+            [ 'name' => __('Secondary text',     'xarop'), 'slug' => 'text-light',    'color' => $c['text_light']    ?? '' ],
+            [ 'name' => __('Background',         'xarop'), 'slug' => 'bg',            'color' => $c['bg']            ?? '' ],
+            [ 'name' => __('Alt background',     'xarop'), 'slug' => 'bg-alt',        'color' => $c['bg_alt']        ?? '' ],
+            [ 'name' => __('Border',             'xarop'), 'slug' => 'border',        'color' => $c['border']        ?? '' ],
              ] 
         );
 
@@ -247,6 +247,7 @@ function xarop_scripts()
 // ────────────────────────────────────────────────────────────────────────────
 
 require_once XAROP_DIR . '/inc/customizer.php'; // must be first — registers xarop_config filter before any module calls xarop_get_config()
+require_once XAROP_DIR . '/inc/loopback-fix.php'; // fix REST API & loopback timeouts in local dev
 require_once XAROP_DIR . '/inc/cleanup.php';
 require_once XAROP_DIR . '/inc/meta-boxes.php';
 require_once XAROP_DIR . '/inc/rest-api.php';

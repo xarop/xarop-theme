@@ -12,15 +12,15 @@ get_header();
 <div class="container">
     <div class="error-404 not-found single-content">
         <header class="page-header">
-            <h1 class="page-title"><?php esc_html_e('404 - Página no encontrada', 'xarop'); ?></h1>
+            <h1 class="page-title"><?php esc_html_e('404 - Page not found', 'xarop'); ?></h1>
         </header>
 
         <div class="page-content">
-            <p><?php esc_html_e('Parece que no se encontró nada en esta ubicación. ¿Quieres buscar?', 'xarop'); ?></p>
+            <p><?php esc_html_e('Nothing was found at this location. Try searching?', 'xarop'); ?></p>
 
             <?php get_search_form(); ?>
 
-            <h2><?php esc_html_e('Entradas recientes', 'xarop'); ?></h2>
+            <h2><?php esc_html_e('Recent posts', 'xarop'); ?></h2>
 
             <?php
             $recent_posts = new WP_Query(

@@ -40,8 +40,8 @@ function xarop_customize_register( WP_Customize_Manager $wp_customize ): void
     $wp_customize->add_panel(
         'xarop_theme',
         [
-            'title'       => __('Xarop Theme', 'xarop-theme'),
-            'description' => __('Global theme settings. Changes made here override theme-config.php.', 'xarop-theme'),
+            'title'       => __('Xarop Theme', 'xarop'),
+            'description' => __('Global theme settings. Changes made here override theme-config.php.', 'xarop'),
             'priority'    => 30,
         ]
     );
@@ -53,21 +53,21 @@ function xarop_customize_register( WP_Customize_Manager $wp_customize ): void
     $wp_customize->add_section(
         'xarop_colors',
         [
-            'title'    => __('Colores', 'xarop-theme'),
+            'title'    => __('Colors', 'xarop'),
             'panel'    => 'xarop_theme',
             'priority' => 10,
         ]
     );
 
     $color_controls = [
-        'primary'       => __('Color principal', 'xarop-theme'),
-        'primary_dark'  => __('Principal oscuro (hover)', 'xarop-theme'),
-        'primary_light' => __('Principal claro (destacados)', 'xarop-theme'),
-        'text'          => __('Texto principal', 'xarop-theme'),
-        'text_light'    => __('Texto secundario', 'xarop-theme'),
-        'bg'            => __('Fondo base', 'xarop-theme'),
-        'bg_alt'        => __('Fondo alternativo', 'xarop-theme'),
-        'border'        => __('Bordes y separadores', 'xarop-theme'),
+        'primary'       => __('Primary color', 'xarop'),
+        'primary_dark'  => __('Primary dark (hover)', 'xarop'),
+        'primary_light' => __('Primary light (highlights)', 'xarop'),
+        'text'          => __('Main text', 'xarop'),
+        'text_light'    => __('Secondary text', 'xarop'),
+        'bg'            => __('Base background', 'xarop'),
+        'bg_alt'        => __('Alternate background', 'xarop'),
+        'border'        => __('Borders and dividers', 'xarop'),
     ];
 
     foreach ( $color_controls as $key => $label ) {
@@ -102,18 +102,18 @@ function xarop_customize_register( WP_Customize_Manager $wp_customize ): void
     $wp_customize->add_section(
         'xarop_typography',
         [
-            'title'    => __('Tipografía', 'xarop-theme'),
+            'title'    => __('Typography', 'xarop'),
             'panel'    => 'xarop_theme',
             'priority' => 20,
         ]
     );
 
     $typo_controls = [
-        'font_primary' => __('Fuente de texto', 'xarop-theme'),
-        'font_heading' => __('Fuente de títulos', 'xarop-theme'),
-        'font_mono'    => __('Fuente monoespaciada', 'xarop-theme'),
-        'size_base'    => __('Tamaño base (px, rem…)', 'xarop-theme'),
-        'line_height'  => __('Interlineado', 'xarop-theme'),
+        'font_primary' => __('Body font', 'xarop'),
+        'font_heading' => __('Heading font', 'xarop'),
+        'font_mono'    => __('Monospace font', 'xarop'),
+        'size_base'    => __('Base size (px, rem…)', 'xarop'),
+        'line_height'  => __('Line height', 'xarop'),
     ];
 
     foreach ( $typo_controls as $key => $label ) {
@@ -146,7 +146,7 @@ function xarop_customize_register( WP_Customize_Manager $wp_customize ): void
     $wp_customize->add_section(
         'xarop_features',
         [
-            'title'    => __('Funcionalidades', 'xarop-theme'),
+            'title'    => __('Features', 'xarop'),
             'panel'    => 'xarop_theme',
             'priority' => 30,
         ]
@@ -154,24 +154,24 @@ function xarop_customize_register( WP_Customize_Manager $wp_customize ): void
 
     $feature_controls = [
         'gutenberg_enabled'  => [
-            'label'       => __('Editor de bloques (Gutenberg)', 'xarop-theme'),
-            'description' => __('Desactívalo para eliminar el editor de bloques.', 'xarop-theme'),
+            'label'       => __('Block editor (Gutenberg)', 'xarop'),
+            'description' => __('Disable to remove the block editor entirely.', 'xarop'),
         ],
         'blog_enabled'       => [
-            'label'       => __('Blog / Entradas', 'xarop-theme'),
-            'description' => __('Desactívalo en sitios sin blog ni noticias.', 'xarop-theme'),
+            'label'       => __('Blog / Posts', 'xarop'),
+            'description' => __('Disable on sites with no blog or news section.', 'xarop'),
         ],
         'comments_enabled'   => [
-            'label'       => __('Sistema de comentarios', 'xarop-theme'),
-            'description' => __('Actívalo para mostrar el formulario de comentarios.', 'xarop-theme'),
+            'label'       => __('Comments system', 'xarop'),
+            'description' => __('Enable to show the comment form on posts and pages.', 'xarop'),
         ],
         'headless_mode'      => [
-            'label'       => __('Modo headless', 'xarop-theme'),
-            'description' => __('Redirige el frontend a la URL de la API REST.', 'xarop-theme'),
+            'label'       => __('Headless mode', 'xarop'),
+            'description' => __('Redirects the front-end to the REST API URL.', 'xarop'),
         ],
         'animations_enabled' => [
-            'label'       => __('Animaciones', 'xarop-theme'),
-            'description' => __('Carga animations.css y el observer de scroll.', 'xarop-theme'),
+            'label'       => __('Animations', 'xarop'),
+            'description' => __('Loads animations.css and the scroll observer script.', 'xarop'),
         ],
     ];
 
@@ -206,8 +206,8 @@ function xarop_customize_register( WP_Customize_Manager $wp_customize ): void
     $wp_customize->add_section(
         'xarop_maintenance',
         [
-            'title'       => __('Modo mantenimiento', 'xarop-theme'),
-            'description' => __('Oculta el sitio a los visitantes no autenticados y muestra un mensaje personalizado.', 'xarop-theme'),
+            'title'       => __('Maintenance mode', 'xarop'),
+            'description' => __('Hides the site from unauthenticated visitors and shows a custom message.', 'xarop'),
             'panel'       => 'xarop_theme',
             'priority'    => 40,
         ]
@@ -226,8 +226,8 @@ function xarop_customize_register( WP_Customize_Manager $wp_customize ): void
     $wp_customize->add_control(
         'xarop_private_site',
         [
-            'label'       => __('Activar modo mantenimiento', 'xarop-theme'),
-            'description' => __('Solo los usuarios con sesión activa podrán ver el sitio.', 'xarop-theme'),
+            'label'       => __('Enable maintenance mode', 'xarop'),
+            'description' => __('Only logged-in users will be able to view the site.', 'xarop'),
             'section'     => 'xarop_maintenance',
             'type'        => 'checkbox',
         ]
@@ -246,7 +246,7 @@ function xarop_customize_register( WP_Customize_Manager $wp_customize ): void
     $wp_customize->add_control(
         'xarop_maintenance_title',
         [
-            'label'           => __('Título de la página', 'xarop-theme'),
+            'label'           => __('Page title', 'xarop'),
             'section'         => 'xarop_maintenance',
             'type'            => 'text',
             'active_callback' => 'xarop_is_private_site_active',
@@ -266,7 +266,7 @@ function xarop_customize_register( WP_Customize_Manager $wp_customize ): void
     $wp_customize->add_control(
         'xarop_maintenance_message',
         [
-            'label'           => __('Mensaje para los visitantes', 'xarop-theme'),
+            'label'           => __('Message for visitors', 'xarop'),
             'section'         => 'xarop_maintenance',
             'type'            => 'textarea',
             'active_callback' => 'xarop_is_private_site_active',
