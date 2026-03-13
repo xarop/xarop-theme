@@ -92,3 +92,24 @@ SINGLE POST/PAGE
     transform: translateY(-1px);
     box-shadow: var(--shadow-sm);
 }
+
+/* Tags — inline, comma-separated, smaller than category buttons */
+.post-tags {
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-small);
+    color: var(--color-text-light);
+}
+
+.post-tags .post-tag {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.post-tags .post-tag:hover {
+    color: var(--color-primary);
+}
+
+.post-tags .post-tag-sep {
+    color: var(--color-text-lighter);
+}

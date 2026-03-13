@@ -136,8 +136,18 @@ function xarop_setup()
 add_action(
     'init', function () {
         register_taxonomy_for_object_type('category', 'page');
+        register_taxonomy_for_object_type('post_tag', 'post');
         add_post_type_support('page', 'excerpt');
-    } 
+
+        // Ensure post_tag is visible in REST API and block editor.
+        global $wp_taxonomies;
+        if ( isset( $wp_taxonomies['post_tag'] ) ) {
+            $wp_taxonomies['post_tag']->show_in_rest       = true;
+            $wp_taxonomies['post_tag']->show_ui            = true;
+            $wp_taxonomies['post_tag']->show_admin_column  = true;
+            $wp_taxonomies['post_tag']->rest_base          = 'tags';
+        }
+    }, 999
 );
 
 
@@ -246,6 +256,20 @@ function xarop_editor_css_variables()
     wp_register_style('xarop-editor-vars', false);
     wp_enqueue_style('xarop-editor-vars');
     wp_add_inline_style('xarop-editor-vars', $css);
+
+    // Force the Tags panel to be enabled if the user previously turned it off.
+    wp_add_inline_script(
+        'wp-edit-post',
+        "wp.domReady( function () {
+    setTimeout( function () {
+        var sel = wp.data && wp.data.select( 'core/edit-post' );
+        var dis = wp.data && wp.data.dispatch( 'core/edit-post' );
+        if ( sel && dis && sel.isEditorPanelEnabled( 'taxonomy-panel-post_tag' ) === false ) {
+            dis.toggleEditorPanelEnabled( 'taxonomy-panel-post_tag' );
+        }
+    }, 600 );
+} );"
+    );
 }
 
 // ────────────────────────────────────────────────────────────────────────────
