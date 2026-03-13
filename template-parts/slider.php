@@ -15,7 +15,7 @@ $slide_class            = isset($slide_class) ? $slide_class : 'slide';
 $slider_container_class = isset($slider_container_class) ? $slider_container_class : 'slider-container';
 
 // Auto-build query from the current page's categories if not provided externally.
-if ( ! isset($slider_query) || ! ($slider_query instanceof WP_Query) ) {
+if (! isset($slider_query) || ! ($slider_query instanceof WP_Query) ) {
     $slider_post_type = ( isset($slider_config['type']) && $slider_config['type'] === 'posts' ) ? 'post' : 'page';
     $current_id       = (int) get_queried_object_id();
     $current_cats     = $current_id
@@ -51,7 +51,7 @@ if ( ! isset($slider_query) || ! ($slider_query instanceof WP_Query) ) {
         )
     );
 
-    if ( empty($slider_ids) ) {
+    if (empty($slider_ids) ) {
         return;
     }
 

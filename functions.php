@@ -233,7 +233,8 @@ function xarop_editor_css_variables()
     ];
 
     $vars = array_filter($map);
-    if ( empty($vars) ) { return; }
+    if (empty($vars) ) { return; 
+    }
 
     $css = ":root {
 ";
