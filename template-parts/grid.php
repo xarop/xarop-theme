@@ -46,9 +46,6 @@ if (!isset($grid_id)) {
 if ($has_posts) :
     ?>
 <div class="grid-section">
-    <?php if (!empty($section_title)) : ?>
-        <h2 class="text-center"><?php echo esc_html($section_title); ?></h2>
-    <?php endif; ?>
 
     <?php if ($show_filters && !empty($categories) && !is_wp_error($categories)) : ?>
         <div class="category-filters" role="group" aria-label="<?php esc_attr_e('Filter by category', 'xarop'); ?>">

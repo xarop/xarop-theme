@@ -11,13 +11,19 @@ get_header();
 
 <div class="container">
     <header class="page-header">
-        <h1 class="page-title text-center"><?php echo get_the_archive_title(); ?></h1>
+        <h1 class="page-title"><?php echo get_the_archive_title(); ?></h1>
         <?php
         $archive_description = get_the_archive_description();
-        if ($archive_description) :
+        if ($archive_description ) :
             ?>
-            <p class="archive-description text-center"><?php echo wp_kses_post($archive_description); ?></p>
-        <?php endif; ?>
+            <p class="archive-description"><?php echo wp_kses_post($archive_description); ?></p>
+        <?php elseif (is_category() || is_tag() || is_tax() ) :
+            $term_excerpt = term_description();
+            if ($term_excerpt ) :
+                ?>
+                <p class="archive-description"><?php echo wp_kses_post($term_excerpt); ?></p>
+            <?php endif;
+        endif; ?>
     </header>
 
     <?php if (have_posts()) : ?>

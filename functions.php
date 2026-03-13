@@ -127,11 +127,16 @@ function xarop_setup()
         // Disable the full free-picker so editors only use brand colours.
         add_theme_support('disable-custom-colors');
     }
+
+    // Load theme stylesheet in the block editor so colors and typography
+    // look the same as on the front end.
+    add_editor_style('assets/css/style.css');
 }
 
 add_action(
     'init', function () {
         register_taxonomy_for_object_type('category', 'page');
+        add_post_type_support('page', 'excerpt');
     } 
 );
 
@@ -200,6 +205,47 @@ function xarop_inject_css_variables()
     echo "}\n</style>\n";
 }
 
+
+// ────────────────────────────────────────────────────────────────────────────
+// BLOCK EDITOR — inject customizer CSS variables into the editor iframe
+// ────────────────────────────────────────────────────────────────────────────
+
+add_action('enqueue_block_editor_assets', 'xarop_editor_css_variables');
+function xarop_editor_css_variables()
+{
+    $config = xarop_get_config();
+    $colors = $config['colors'];
+    $typo   = $config['typography'];
+
+    $map = [
+        '--color-primary'       => $colors['primary']       ?? '',
+        '--color-primary-dark'  => $colors['primary_dark']  ?? '',
+        '--color-primary-light' => $colors['primary_light'] ?? '',
+        '--color-text'          => $colors['text']          ?? '',
+        '--color-text-light'    => $colors['text_light']    ?? '',
+        '--color-bg'            => $colors['bg']            ?? '',
+        '--color-bg-alt'        => $colors['bg_alt']        ?? '',
+        '--color-border'        => $colors['border']        ?? '',
+        '--font-primary'        => $typo['font_primary']    ?? '',
+        '--font-heading'        => $typo['font_heading']    ?? '',
+        '--font-size-base'      => $typo['size_base']       ?? '',
+        '--line-height-base'    => $typo['line_height']     ?? '',
+    ];
+
+    $vars = array_filter($map);
+    if ( empty($vars) ) { return; }
+
+    $css = ":root {
+";
+    foreach ( $vars as $prop => $value ) {
+        $css .= sprintf("\t%s: %s;\n", esc_attr($prop), esc_attr($value));
+    }
+    $css .= "}";
+
+    wp_register_style('xarop-editor-vars', false);
+    wp_enqueue_style('xarop-editor-vars');
+    wp_add_inline_style('xarop-editor-vars', $css);
+}
 
 // ────────────────────────────────────────────────────────────────────────────
 // ENQUEUE SCRIPTS Y ESTILOS

@@ -1,6 +1,49 @@
 /* ===========================
 UTILITY CLASSES
 =========================== */
+
+/* ── Gutenberg / block editor color palette ──────────────────────────────
+   Maps has-{slug}-color and has-{slug}-background-color classes to the
+   theme CSS variables defined in variables.css.
+   Slugs: primary | primary-dark | primary-light | text | text-light |
+          bg | bg-alt | border
+------------------------------------------------------------------------- */
+.has-primary-color            { color:            var(--color-primary)      !important; }
+.has-primary-background-color { background-color: var(--color-primary)      !important; }
+
+.has-primary-dark-color            { color:            var(--color-primary-dark)  !important; }
+.has-primary-dark-background-color { background-color: var(--color-primary-dark)  !important; }
+
+.has-primary-light-color            { color:            var(--color-primary-light) !important; }
+.has-primary-light-background-color { background-color: var(--color-primary-light) !important; }
+
+.has-text-color-palette            { color:            var(--color-text)          !important; }
+.has-text-background-color         { background-color: var(--color-text)          !important; }
+
+.has-text-light-color            { color:            var(--color-text-light)    !important; }
+.has-text-light-background-color { background-color: var(--color-text-light)    !important; }
+
+.has-bg-color            { color:            var(--color-bg)            !important; }
+.has-bg-background-color { background-color: var(--color-bg)            !important; }
+
+.has-bg-alt-color            { color:            var(--color-bg-alt)        !important; }
+.has-bg-alt-background-color { background-color: var(--color-bg-alt)        !important; }
+
+.has-border-color-palette    { color:            var(--color-border)        !important; }
+.has-border-background-color { background-color: var(--color-border)        !important; }
+
+/* ── Gutenberg link color (wp-elements-* inline vars) ────────────────── */
+:root {
+    --wp--preset--color--primary:       var(--color-primary);
+    --wp--preset--color--primary-dark:  var(--color-primary-dark);
+    --wp--preset--color--primary-light: var(--color-primary-light);
+    --wp--preset--color--text:          var(--color-text);
+    --wp--preset--color--text-light:    var(--color-text-light);
+    --wp--preset--color--bg:            var(--color-bg);
+    --wp--preset--color--bg-alt:        var(--color-bg-alt);
+    --wp--preset--color--border:        var(--color-border);
+}
+
 .text-center {
     text-align: center;
 }

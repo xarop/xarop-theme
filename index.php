@@ -29,6 +29,9 @@ get_header();
             );
             ?>
             <?php if (! empty($categories) && ! is_wp_error($categories) ) : ?>
+                <header class="entry-header text-center">
+                    <h1><?php echo esc_html($section_title); ?></h1>
+                </header>
                 <?php include locate_template('template-parts/grid.php'); ?>
             <?php endif; ?>
 
