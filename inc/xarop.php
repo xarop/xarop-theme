@@ -55,12 +55,16 @@ function xarop_login_logo()
 add_action('login_enqueue_scripts', 'xarop_login_logo');
 
 // Link the login logo to xarop.com
-add_filter('login_headerurl', function () {
-    return 'https://xarop.com';
-});
-add_filter('login_headertext', function () {
-    return 'xarop.com';
-});
+add_filter(
+    'login_headerurl', function () {
+        return 'https://xarop.com';
+    }
+);
+add_filter(
+    'login_headertext', function () {
+        return 'xarop.com';
+    }
+);
 
 
 // DASHBOARD

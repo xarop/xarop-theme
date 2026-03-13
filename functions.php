@@ -141,7 +141,7 @@ add_action(
 
         // Ensure post_tag is visible in REST API and block editor.
         global $wp_taxonomies;
-        if ( isset( $wp_taxonomies['post_tag'] ) ) {
+        if (isset($wp_taxonomies['post_tag']) ) {
             $wp_taxonomies['post_tag']->show_in_rest       = true;
             $wp_taxonomies['post_tag']->show_ui            = true;
             $wp_taxonomies['post_tag']->show_admin_column  = true;
