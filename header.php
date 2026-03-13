@@ -46,6 +46,14 @@
             ?>
         </div>
 
+        <!-- Search Toggle (before hamburger so it sits to its left on mobile) -->
+        <label for="search-toggle" class="search-toggle-label" aria-label="<?php esc_attr_e('Open search', 'xarop'); ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="11" cy="11" r="7"/>
+                <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+            </svg>
+        </label>
+
         <!-- CSS-Only Hamburger Menu -->
         <input type="checkbox" id="menu-toggle" />
         <label for="menu-toggle" class="menu-toggle-label" aria-label="<?php esc_attr_e('Open menu', 'xarop'); ?>">
@@ -95,5 +103,25 @@
         </nav>
     </div>
 </header>
+
+<!-- Search checkbox + modal live OUTSIDE <header> so backdrop-filter on the
+     header does not trap position:fixed children inside its bounds.
+     The <label> (magnifier) inside the header still controls this checkbox. -->
+<input type="checkbox" id="search-toggle" />
+<div class="search-modal">
+    <label for="search-toggle" class="search-modal-backdrop" aria-hidden="true"></label>
+    <div class="search-modal-content">
+        <div class="search-modal-header">
+            <p class="search-modal-hint"><?php esc_html_e('What are you looking for?', 'xarop'); ?></p>
+            <label for="search-toggle" class="search-modal-close" aria-label="<?php esc_attr_e('Close search', 'xarop'); ?>">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </label>
+        </div>
+        <?php get_search_form(); ?>
+    </div>
+</div>
 
 <main id="main-content" class="site-main">

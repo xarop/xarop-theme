@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xarop Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-13 12:21+0000\n"
+"POT-Creation-Date: 2026-03-13 11:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Borrar todo"
 msgstr ""
 
-#: comments.php:72
+#: comments.php:65
 msgid "Cancel reply"
 msgstr ""
 
@@ -134,19 +134,15 @@ msgstr ""
 msgid "cd _headless && npm install && npm run dev"
 msgstr ""
 
-#: header.php:116
-msgid "Close search"
-msgstr ""
-
 #: inc/customizer.php:56
 msgid "Colors"
 msgstr ""
 
-#: comments.php:76
+#: comments.php:69
 msgid "Comment"
 msgstr ""
 
-#: comments.php:64
+#: comments.php:58
 msgid "Comments are closed."
 msgstr ""
 
@@ -155,7 +151,7 @@ msgid "Comments system"
 msgstr ""
 
 #. 1: comment count, 2: post title
-#: comments.php:27
+#: comments.php:26
 #, php-format
 msgctxt "comments title"
 msgid "%1$s comment on &ldquo;%2$s&rdquo;"
@@ -239,16 +235,19 @@ msgid ""
 "Hides the site from unauthenticated visitors and shows a custom message."
 msgstr ""
 
-#. URI of the theme
 #. Author URI of the theme
 msgid "https://xarop.com"
+msgstr ""
+
+#. URI of the theme
+msgid "https://xarop.com/xarop-theme"
 msgstr ""
 
 #: inc/rest-api.php:28 inc/rest-api.php:48
 msgid "IDs and URLs of custom gallery images"
 msgstr ""
 
-#: comments.php:70
+#: comments.php:63
 msgid "Leave a comment"
 msgstr ""
 
@@ -270,7 +269,7 @@ msgstr ""
 msgid "Made in Barcelona by %s"
 msgstr ""
 
-#: functions.php:100 header.php:69
+#: functions.php:100 header.php:61
 msgid "Main menu"
 msgstr ""
 
@@ -290,7 +289,7 @@ msgstr ""
 msgid "Monospace font"
 msgstr ""
 
-#: comments.php:57
+#: comments.php:52
 msgid "Newer comments"
 msgstr ""
 
@@ -318,7 +317,7 @@ msgstr ""
 msgid "Nothing was found at this location. Try searching?"
 msgstr ""
 
-#: comments.php:56
+#: comments.php:51
 msgid "Older comments"
 msgstr ""
 
@@ -326,12 +325,8 @@ msgstr ""
 msgid "Only logged-in users will be able to view the site."
 msgstr ""
 
-#: header.php:59
+#: header.php:51
 msgid "Open menu"
-msgstr ""
-
-#: header.php:50
-msgid "Open search"
 msgstr ""
 
 #: inc/customizer.php:249
@@ -343,7 +338,7 @@ msgctxt "placeholder"
 msgid "Search&hellip;"
 msgstr ""
 
-#: comments.php:73
+#: comments.php:66
 msgid "Post comment"
 msgstr ""
 
@@ -387,12 +382,12 @@ msgstr ""
 msgid "Related posts"
 msgstr ""
 
-#: comments.php:71
+#: comments.php:64
 #, php-format
 msgid "Reply to %s"
 msgstr ""
 
-#: searchform.php:6 searchform.php:7
+#: searchform.php:7
 msgid "Search"
 msgstr ""
 
@@ -437,10 +432,6 @@ msgstr ""
 
 #: inc/customizer.php:105
 msgid "Typography"
-msgstr ""
-
-#: header.php:115
-msgid "What are you looking for?"
 msgstr ""
 
 #. Name of the theme

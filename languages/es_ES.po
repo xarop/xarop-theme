@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Xarop Theme\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-18 11:53+0000\n"
-"PO-Revision-Date: 2026-03-13 11:30+0000\n"
+"PO-Revision-Date: 2026-03-13 12:22+0000\n"
 "Last-Translator: \n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
@@ -117,7 +117,7 @@ msgstr "Fronteras y divisores"
 msgid "Borrar todo"
 msgstr "Borrar todo"
 
-#: comments.php:65
+#: comments.php:72
 msgid "Cancel reply"
 msgstr "Cancelar respuesta"
 
@@ -138,15 +138,19 @@ msgstr "Categoria: %s"
 msgid "cd _headless && npm install && npm run dev"
 msgstr "cd _headless && npm install && npm run dev"
 
+#: header.php:116
+msgid "Close search"
+msgstr "Cerrar búsqueda"
+
 #: inc/customizer.php:56
 msgid "Colors"
 msgstr "Bandera"
 
-#: comments.php:69
+#: comments.php:76
 msgid "Comment"
 msgstr "Comentario"
 
-#: comments.php:58
+#: comments.php:64
 msgid "Comments are closed."
 msgstr "Los comentarios están cerrados."
 
@@ -155,7 +159,7 @@ msgid "Comments system"
 msgstr "Sistema de comentarios"
 
 #. 1: comment count, 2: post title
-#: comments.php:26
+#: comments.php:27
 #, fuzzy, php-format
 #| msgid "%1$s comentario en &ldquo;%2$s&rdquo;"
 #| msgid_plural "%1$s comentarios en &ldquo;%2$s&rdquo;"
@@ -250,19 +254,16 @@ msgstr ""
 "Oculta el sitio a los visitantes no autenticados y muestra un mensaje "
 "personalizado."
 
+#. URI of the theme
 #. Author URI of the theme
 msgid "https://xarop.com"
 msgstr "https://xarop.com"
-
-#. URI of the theme
-msgid "https://xarop.com/xarop-theme"
-msgstr "https://xarop.com/tema-xarop"
 
 #: inc/rest-api.php:28 inc/rest-api.php:48
 msgid "IDs and URLs of custom gallery images"
 msgstr "ID y URL de imágenes de galería personalizadas"
 
-#: comments.php:63
+#: comments.php:70
 msgid "Leave a comment"
 msgstr "Deja un comentario"
 
@@ -284,7 +285,7 @@ msgstr "Acceso"
 msgid "Made in Barcelona by %s"
 msgstr "Hecho en Barcelona por %s"
 
-#: functions.php:100 header.php:61
+#: functions.php:100 header.php:69
 msgid "Main menu"
 msgstr "Menú principal"
 
@@ -304,7 +305,7 @@ msgstr "Mensaje para los visitantes"
 msgid "Monospace font"
 msgstr "Fuente monoespaciada"
 
-#: comments.php:52
+#: comments.php:57
 msgid "Newer comments"
 msgstr "Comentarios más recientes"
 
@@ -336,7 +337,7 @@ msgstr "No se encontraron elementos en esta categoría."
 msgid "Nothing was found at this location. Try searching?"
 msgstr "No se encontró nada en esta ubicación. ¿Intenta buscar?"
 
-#: comments.php:51
+#: comments.php:56
 msgid "Older comments"
 msgstr "Comentarios anteriores"
 
@@ -344,9 +345,13 @@ msgstr "Comentarios anteriores"
 msgid "Only logged-in users will be able to view the site."
 msgstr "Solo los usuarios registrados podrán ver el sitio."
 
-#: header.php:51
+#: header.php:59
 msgid "Open menu"
 msgstr "Abrir menú"
+
+#: header.php:50
+msgid "Open search"
+msgstr "Abrir búsqueda"
 
 #: inc/customizer.php:249
 msgid "Page title"
@@ -359,7 +364,7 @@ msgctxt "placeholder"
 msgid "Search&hellip;"
 msgstr "Buscar…"
 
-#: comments.php:66
+#: comments.php:73
 msgid "Post comment"
 msgstr "Publicar comentario"
 
@@ -403,12 +408,12 @@ msgstr "Redirige la interfaz de usuario a la URL de la API REST."
 msgid "Related posts"
 msgstr "Publicaciones relacionadas"
 
-#: comments.php:64
+#: comments.php:71
 #, php-format
 msgid "Reply to %s"
 msgstr "Responder a %s"
 
-#: searchform.php:7
+#: searchform.php:6 searchform.php:7
 msgid "Search"
 msgstr "Buscar"
 
@@ -457,6 +462,10 @@ msgstr "Tu comentario está pendiente de moderación."
 #: inc/customizer.php:105
 msgid "Typography"
 msgstr "Tipografía"
+
+#: header.php:115
+msgid "What are you looking for?"
+msgstr "¿Qué estás buscando?"
 
 #. Name of the theme
 #: inc/customizer.php:43

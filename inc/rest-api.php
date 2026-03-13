@@ -25,7 +25,7 @@ function xarop_register_gallery_field_page()
         'get_callback'    => 'xarop_get_gallery_data',
         'update_callback' => null,
         'schema'          => array(
-'description' => __('IDs and URLs of custom gallery images', 'xarop'),
+        'description' => __('IDs and URLs of custom gallery images', 'xarop'),
                 'type'        => 'object',
         ),
         )
@@ -45,7 +45,7 @@ function xarop_register_gallery_field_post()
         'get_callback'    => 'xarop_get_gallery_data',
         'update_callback' => null,
         'schema'          => array(
-'description' => __('IDs and URLs of custom gallery images', 'xarop'),
+        'description' => __('IDs and URLs of custom gallery images', 'xarop'),
                 'type'        => 'object',
         ),
         )

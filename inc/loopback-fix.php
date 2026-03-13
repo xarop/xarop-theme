@@ -42,9 +42,9 @@ add_filter('pre_http_request', 'xarop_loopback_intercept', 5, 3);
  * health test, WP-Cron spawn) get a synthetic 200 OK — no TCP connection
  * is ever opened.
  *
- * @param false|array $preempt Existing pre-empt value (false = do not preempt).
- * @param array       $args    Parsed request arguments.
- * @param string      $url     Request URL.
+ * @param  false|array $preempt Existing pre-empt value (false = do not preempt).
+ * @param  array       $args    Parsed request arguments.
+ * @param  string      $url     Request URL.
  * @return false|array
  */
 function xarop_loopback_intercept($preempt, $args, $url)
@@ -129,8 +129,8 @@ if ($_xarop_dev) {
     /**
      * Disables SSL peer verification for requests targeting this site's host.
      *
-     * @param array  $args Parsed request arguments.
-     * @param string $url  Request URL.
+     * @param  array  $args Parsed request arguments.
+     * @param  string $url  Request URL.
      * @return array
      */
     function xarop_loopback_disable_ssl_verify($args, $url)

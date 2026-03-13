@@ -13,12 +13,16 @@ get_header();
     <div class="error-404 not-found single-content">
         <header class="page-header">
             <h1 class="page-title"><?php esc_html_e('404 - Page not found', 'xarop'); ?></h1>
+            
+            <p><?php esc_html_e('Nothing was found at this location. Try searching?', 'xarop'); ?></p>
+
+            <div class="searchform-wrapper">
+                <?php get_search_form(); ?>
+            </div>
+
         </header>
 
         <div class="page-content">
-            <p><?php esc_html_e('Nothing was found at this location. Try searching?', 'xarop'); ?></p>
-
-            <?php get_search_form(); ?>
 
             <h2><?php esc_html_e('Recent posts', 'xarop'); ?></h2>
 
