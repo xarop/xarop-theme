@@ -85,6 +85,20 @@ CATEGORY GRID
     transform: scale(1.05);
 }
 
+.post-image.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-border);
+}
+
+.post-image.placeholder svg {
+    width: 30%;
+    height: auto;
+    max-width: 180px;
+    opacity: 0.5;
+}
+
 .card-content {
     padding: var(--spacing-lg);
 }
