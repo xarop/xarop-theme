@@ -1,6 +1,15 @@
 </main>
 
+
+
+
 <footer class="site-footer">
+    <?php if (is_active_sidebar('footer-widgets')) : ?>
+        <div class="footer-inner footer-widgets">
+            <?php dynamic_sidebar('footer-widgets'); ?>
+        </div>
+    <?php endif; ?>
+
     <div class="footer-inner">
 
         <div class="site-info">

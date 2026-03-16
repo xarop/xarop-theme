@@ -117,20 +117,35 @@
 
 .site-footer {
     background-color: var(--color-bg-alt);
-    padding: var(--spacing-2xl) 0;
     margin-top: var(--spacing-3xl);
     border-top: 1px solid var(--color-border);
+}
+
+.site-footer a {
+    color: var(--color-text-light);
+    transition: color var(--transition-base);
+}
+
+.site-footer a:hover {
+    color: var(--color-primary);
 }
 
 .footer-inner {
     max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: 0 var(--container-padding);
+    padding: var(--container-padding);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: var(--spacing-md);
+}
+
+
+.footer-widgets {
+    border-bottom: 1px dotted var(--color-border);
+    text-align: center;
+    justify-content: center;
 }
 
 .site-info {

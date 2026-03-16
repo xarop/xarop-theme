@@ -273,6 +273,26 @@ function xarop_editor_css_variables()
 }
 
 // ────────────────────────────────────────────────────────────────────────────
+// WIDGET AREAS
+// ────────────────────────────────────────────────────────────────────────────
+
+add_action('widgets_init', 'xarop_register_sidebars');
+function xarop_register_sidebars()
+{
+    register_sidebar(
+        [
+        'name'          => __('Footer', 'xarop'),
+        'id'            => 'footer-widgets',
+        'description'   => __('Widgets shown in the site footer.', 'xarop'),
+        'before_widget' => '<div id="%1$s" class="footer-widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="footer-widget-title">',
+        'after_title'   => '</h4>',
+         ]
+    );
+}
+
+// ────────────────────────────────────────────────────────────────────────────
 // ENQUEUE SCRIPTS Y ESTILOS
 // ────────────────────────────────────────────────────────────────────────────
 
