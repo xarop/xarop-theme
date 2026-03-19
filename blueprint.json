@@ -1,8 +1,7 @@
 {
     "$schema": "https://playground.wordpress.net/blueprint-schema.json",
     "landingPage": "/",
-    "preferredPhpVersion": "8.2",
-    "preferredWordPressVersion": "latest",
+    "preferredPhpVersion": "8.1",
     "steps": [
         {
             "step": "login",
@@ -23,16 +22,20 @@
             "step": "installPlugin",
             "pluginData": {
                 "resource": "wordpress.org/plugins/gutenberg"
-            },
-            "options": {
-                "activate": true
             }
         },
         {
             "step": "setSiteOptions",
             "options": {
-                "blogname": "Testing Xarop Theme",
-                "WPLANG": "es_ES"
+                "blogname": "Xarop Demo",
+                "blogdescription": "Probando el starter kit de xarop.com",
+                "WPLANG": "ca"
+            }
+        },
+        {
+            "step": "writeFiles",
+            "files": {
+                "wp-content/themes/xarop-theme-main/theme-config.php": "<?php return [ 'colors' => [ 'primary' => '#ee2455' ], 'gutenberg_enabled' => true ]; ?>"
             }
         }
     ]
