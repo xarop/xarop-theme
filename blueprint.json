@@ -1,7 +1,7 @@
 {
     "$schema": "https://playground.wordpress.net/blueprint-schema.json",
-    "landingPage": "/",
-    "preferredPhpVersion": "8.1",
+    "landingPage": "/wp-admin/",
+    "preferredPhpVersion": "8.2",
     "steps": [
         {
             "step": "login",
@@ -19,23 +19,20 @@
             }
         },
         {
-            "step": "installPlugin",
-            "pluginData": {
-                "resource": "wordpress.org/plugins/gutenberg"
+            "step": "createUser",
+            "options": {
+                "username": "cliente_demo",
+                "password": "cliente_password",
+                "role": "editor",
+                "nickname": "Gestor de Contenidos",
+                "display_name": "Cliente Xarop"
             }
         },
         {
             "step": "setSiteOptions",
             "options": {
-                "blogname": "Xarop Demo",
-                "blogdescription": "Probando el starter kit de xarop.com",
-                "WPLANG": "ca"
-            }
-        },
-        {
-            "step": "writeFiles",
-            "files": {
-                "wp-content/themes/xarop-theme-main/theme-config.php": "<?php return [ 'colors' => [ 'primary' => '#ee2455' ], 'gutenberg_enabled' => true ]; ?>"
+                "blogname": "Panel de Cliente - Xarop",
+                "WPLANG": "es_ES"
             }
         }
     ]
