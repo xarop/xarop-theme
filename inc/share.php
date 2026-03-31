@@ -5,8 +5,8 @@
  * Output social share buttons for LinkedIn, Facebook, Twitter, WhatsApp, and Telegram.
  * Usage: Call xarop_theme_share_buttons() after the entry-categories block in your template.
  */
-
-function xarop_theme_share_buttons() {
+function xarop_theme_share_buttons()
+{
     if (is_singular()) {
         $url   = urlencode(get_permalink());
         $title = urlencode(get_the_title());
