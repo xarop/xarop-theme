@@ -1,0 +1,39 @@
+{
+    "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+    "landingPage": "/wp-admin/",
+    "preferredPhpVersion": "8.2",
+    "steps": [
+        {
+            "step": "login",
+            "username": "admin",
+            "password": "password"
+        },
+        {
+            "step": "installTheme",
+            "themeData": {
+                "resource": "url",
+                "url": "https://github.com/xarop/xarop-theme/archive/refs/heads/main.zip"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
+            "step": "createUser",
+            "options": {
+                "username": "cliente_demo",
+                "password": "cliente_password",
+                "role": "editor",
+                "nickname": "Gestor de Contenidos",
+                "display_name": "Cliente Xarop"
+            }
+        },
+        {
+            "step": "setSiteOptions",
+            "options": {
+                "blogname": "Panel de Cliente - Xarop",
+                "WPLANG": "es_ES"
+            }
+        }
+    ]
+}
